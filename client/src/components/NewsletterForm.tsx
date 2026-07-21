@@ -56,7 +56,7 @@ export function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-[2rem] border border-white/90 bg-white/90 p-6 shadow-[0_18px_45px_rgba(73,95,109,0.14)] sm:p-8" noValidate>
+    <form onSubmit={onSubmit} className="rounded-[1.55rem] border border-white/90 bg-white/88 p-6 shadow-[0_18px_45px_rgba(73,95,109,0.12)] sm:p-8" noValidate>
       <div className="mb-6 flex items-start gap-3 rounded-2xl bg-[#F4F9FC] px-4 py-3 text-sm leading-relaxed text-[#4B6677]">
         <LockKeyhole className="mt-0.5 size-4 shrink-0 text-[#4A8BCE]" aria-hidden="true" />
         <p>
@@ -98,7 +98,7 @@ export function NewsletterForm() {
             checked={consent}
             onChange={(event) => setConsent(event.target.checked)}
             disabled={!isConnected || isSubmitting}
-            className="mt-0.5 size-4 rounded border-[#B8C8C0] accent-[#E56B42] disabled:cursor-not-allowed"
+            className="mt-0.5 size-4 rounded border-[#B8C8C0] accent-[#4A8BCE] disabled:cursor-not-allowed"
           />
           <span>
             Ich habe die Datenschutzhinweise gelesen und möchte den Newsletter erhalten. Meine Einwilligung kann ich jederzeit mit Wirkung für die Zukunft widerrufen.
@@ -109,7 +109,7 @@ export function NewsletterForm() {
           type="submit"
           size="lg"
           disabled={!isConnected || isSubmitting}
-          className="h-13 rounded-xl bg-[#E56B42] px-6 text-base font-extrabold text-white shadow-[0_12px_22px_rgba(229,107,66,0.22)] transition hover:bg-[#CC5932] active:scale-[0.98] disabled:shadow-none"
+          className="h-13 rounded-xl bg-[#E56B42] px-6 text-base font-extrabold text-white shadow-[0_12px_22px_rgba(229,107,66,0.22)] transition hover:bg-[#CC5932] active:scale-[0.98] disabled:bg-[#EAB09B] disabled:shadow-none"
         >
           {isSubmitting ? <Loader2 className="size-5 animate-spin" aria-hidden="true" /> : null}
           {isConnected ? "Newsletter anmelden" : "Anmeldung wird vorbereitet"}

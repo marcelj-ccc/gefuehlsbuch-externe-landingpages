@@ -20,7 +20,7 @@ export default function Newsletter() {
     <PageShell>
       <section className="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-14 pt-6 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:px-10 lg:pb-24 lg:pt-10">
         <div className="max-w-xl">
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#FFF5ED] px-4 py-2 text-sm font-extrabold text-[#C45D3D] shadow-sm">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#F4F9FC] px-4 py-2 text-sm font-extrabold text-[#3372AF] shadow-sm">
             <Mail className="size-4" aria-hidden="true" /> Kleine Post für große Gefühle
           </p>
           <h1 className="font-display text-5xl font-semibold leading-[0.94] tracking-[-0.035em] text-[#3372AF] sm:text-6xl lg:text-7xl">
@@ -47,39 +47,46 @@ export default function Newsletter() {
         </div>
       </section>
 
-      <section className="relative bg-white/80 py-16 sm:py-20">
+      <section className="relative py-16 sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16 lg:px-10">
-          <div className="max-w-md">
-            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#E56B42]">Newsletter</p>
+          <div className="max-w-md self-center">
+            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">Newsletter</p>
             <h2 className="mt-3 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.03em] text-[#3372AF] sm:text-5xl">Ein kleiner Platz in deinem Postfach.</h2>
             <p className="mt-6 text-base leading-relaxed text-[#626A72]">
               Du entscheidest jederzeit selbst, ob du weiterlesen möchtest. Die Anmeldung wird erst geöffnet, wenn Versand und Datenschutzhinweise vollständig eingerichtet sind.
             </p>
           </div>
-          <NewsletterForm />
+          <div className="paper-chapter rounded-[2rem] p-2 sm:p-3"><NewsletterForm /></div>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="paper-chapter rounded-[2rem] px-5 py-8 sm:px-8 sm:py-10">
+          <div className="max-w-2xl">
+            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">Drei kleine Kapitel</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.03em] text-[#3372AF] sm:text-5xl">Zum Lesen, Aufbewahren und Weiterdenken.</h2>
+          </div>
+          <div className="mt-8 grid gap-3 md:grid-cols-3 md:gap-0">
           {reasons.map(({ icon: Icon, title, text }, index) => (
-            <article key={title} className={`group rounded-[1.75rem] p-6 shadow-[0_15px_34px_rgba(83,92,99,0.08)] transition duration-200 hover:-translate-y-1 ${index === 1 ? "bg-[#EAF4FA]" : index === 2 ? "bg-[#FFF1E7]" : "bg-white/85"}`}>
-              <span className="mb-5 grid size-11 place-items-center rounded-2xl bg-white/85 text-[#E56B42] shadow-sm"><Icon className="size-5" aria-hidden="true" /></span>
+            <article key={title} className={`relative overflow-hidden px-4 py-5 sm:px-6 ${index < 2 ? "border-b border-dashed border-[#B5CBD1]/75 md:border-b-0 md:border-r" : ""}`}>
+              <span className={`pointer-events-none absolute -right-7 -top-9 size-28 rounded-full blur-xl ${index === 1 ? "bg-[#B5CBD1]/35" : index === 2 ? "bg-[#F9CDBC]/32" : "bg-white/70"}`} />
+              <span className="relative mb-5 grid size-11 place-items-center rounded-full bg-white/78 text-[#4A8BCE] shadow-sm"><Icon className="size-5" aria-hidden="true" /></span>
               <h3 className="text-lg font-extrabold text-[#3372AF]">{title}</h3>
               <p className="mt-3 leading-relaxed text-[#626A72]">{text}</p>
             </article>
           ))}
+          </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 pb-5 sm:px-8 lg:px-10">
-        <div className="grid items-center gap-8 overflow-hidden rounded-[2.25rem] bg-[#4A8BCE] px-7 py-9 text-white shadow-[0_18px_42px_rgba(74,139,206,0.2)] sm:px-10 sm:py-10 lg:grid-cols-[1fr_auto]">
+        <div className="book-invitation grid items-center gap-8 rounded-[2.25rem] bg-[linear-gradient(125deg,#EAF4FA_0%,#F8FBFC_58%,#FDECE2_100%)] px-7 py-9 sm:px-10 sm:py-10 lg:grid-cols-[1fr_auto]">
           <div>
-            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#D9EAF7]">Erst einmal hineinlesen?</p>
-            <h2 className="mt-2 font-display text-4xl font-semibold leading-none tracking-[-0.03em] sm:text-5xl">Entdecke die kostenlose Leseprobe.</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-[#EFF8FD]">Sie zeigt das Vorwort und ausgewählte Buchseiten – ganz in Ruhe und ohne Anmeldung.</p>
+            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">Erst einmal hineinlesen?</p>
+            <h2 className="mt-2 font-display text-4xl font-semibold leading-none tracking-[-0.03em] text-[#3372AF] sm:text-5xl">Lies ein paar Seiten in Ruhe.</h2>
+            <p className="mt-4 max-w-2xl leading-relaxed text-[#59616B]">Vorwort und ausgewählte Buchseiten warten ohne Anmeldung auf dich.</p>
           </div>
-          <Button asChild size="lg" className="h-12 rounded-xl bg-white px-6 font-extrabold text-[#3372AF] shadow-none hover:bg-[#FCEDDD] active:scale-[0.98]">
+          <Button asChild size="lg" className="h-12 rounded-xl bg-[#E56B42] px-6 font-extrabold text-white shadow-[0_12px_22px_rgba(229,107,66,0.20)] hover:bg-[#CC5932] active:scale-[0.98]">
             <Link href="/leseprobe">Zur Leseprobe <ArrowRight className="size-4" aria-hidden="true" /></Link>
           </Button>
         </div>

@@ -68,3 +68,9 @@ Die vorhandene Wortmarke bleibt unverändert. Die Aquarellsonne darf als kleine 
 ## Verbindliche Umsetzungshinweise
 
 Alle Komponenten und Seiten erhalten zu Beginn einen kurzen Kommentar, der diese Gestaltungslinie und ihren spezifischen Zweck zusammenfasst. Jede neue Entscheidung wird daran gemessen, ob sie den „Ruhigen Aquarell-Begleitraum“ stärkt oder verwässert.
+
+## Style Decisions
+
+- **Herzorange bleibt eine Handlungssignatur:** `#E56B42` erscheint innerhalb eines Abschnitts nur an dessen primärer Handlungsaufforderung. Die bestehende Wortmarke und eindeutige Fehlermeldungen bleiben hiervon als Marken- bzw. Statusausnahmen unberührt.
+- **Abschnitte lesen sich wie Buchseiten:** Große Inhaltsbereiche werden als luftige Papierkapitel mit Aquarellwaschung, feinen Trennlinien und großzügigem Weißraum gestaltet. Wiederholte Standard-Kartenraster werden durch offene Kapitelspalten ersetzt.
+- **CTAs bleiben ruhig und einladend:** Prominente Einladungen nutzen Papier-, Nebelblau- und Pfirsichwaschungen statt großer flacher Werbebanner. Ihre Sprache bleibt konkret, sanft und frei von Kampagnenrhetorik.

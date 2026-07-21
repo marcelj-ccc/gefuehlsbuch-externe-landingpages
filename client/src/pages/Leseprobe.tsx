@@ -50,40 +50,43 @@ export default function Leseprobe() {
         </div>
       </section>
 
-      <section className="relative bg-white/80 py-16 sm:py-20">
+      <section className="relative py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="paper-chapter rounded-[2rem] px-5 py-8 sm:px-8 sm:py-10">
           <div className="max-w-2xl">
-            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#E56B42]">Ein Raum für Gefühle</p>
+            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">Ein Raum für Gefühle</p>
             <h2 className="mt-3 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.03em] text-[#3372AF] sm:text-5xl">Nicht richtig oder falsch. Sondern echt.</h2>
             <p className="mt-6 text-lg leading-relaxed text-[#626A72]">Jede Seite lädt Kinder dazu ein, Gefühle wahrzunehmen und kreativ auszudrücken. Dabei geht es darum, sich selbst besser kennenzulernen und miteinander ins Gespräch zu kommen.</p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-8 grid gap-3 md:grid-cols-3 md:gap-0">
             {cues.map(({ icon: Icon, title, text }, index) => (
-              <article key={title} className={`rounded-[1.75rem] p-6 shadow-[0_15px_34px_rgba(83,92,99,0.08)] ${index === 1 ? "bg-[#FFF1E7]" : index === 2 ? "bg-[#EAF4FA]" : "bg-[#FFFEFC]"}`}>
-                <span className="mb-5 grid size-11 place-items-center rounded-2xl bg-white text-[#E56B42] shadow-sm"><Icon className="size-5" aria-hidden="true" /></span>
+              <article key={title} className={`relative overflow-hidden px-4 py-5 sm:px-6 ${index < 2 ? "border-b border-dashed border-[#B5CBD1]/75 md:border-b-0 md:border-r" : ""}`}>
+                <span className={`pointer-events-none absolute -right-7 -top-9 size-28 rounded-full blur-xl ${index === 1 ? "bg-[#F9CDBC]/32" : index === 2 ? "bg-[#B5CBD1]/35" : "bg-white/70"}`} />
+                <span className="relative mb-5 grid size-11 place-items-center rounded-full bg-white/78 text-[#4A8BCE] shadow-sm"><Icon className="size-5" aria-hidden="true" /></span>
                 <h3 className="text-lg font-extrabold text-[#3372AF]">{title}</h3>
                 <p className="mt-3 leading-relaxed text-[#626A72]">{text}</p>
               </article>
             ))}
           </div>
+          </div>
         </div>
       </section>
 
       <section className="mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.12fr_0.88fr] lg:px-10">
-        <div className="rounded-[2rem] border border-white/80 bg-[#EAF4FA] p-7 shadow-[0_16px_36px_rgba(73,95,109,0.08)] sm:p-9">
-          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#E56B42]">Direkt hineinlesen</p>
+        <div className="book-invitation rounded-[2rem] bg-[linear-gradient(135deg,#F2F9FC_0%,#EAF4FA_64%,#FDF6EE_100%)] p-7 sm:p-9">
+          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">Direkt hineinlesen</p>
           <h2 className="mt-3 font-display text-4xl font-semibold leading-none tracking-[-0.03em] text-[#3372AF] sm:text-5xl">Die Leseprobe wartet auf dich.</h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-[#59616B]">Öffne die PDF im Browser und lies sie in deinem eigenen Tempo. Du brauchst dafür weder eine Anmeldung noch eine E-Mail-Adresse.</p>
           <Button asChild size="lg" className="mt-7 h-12 rounded-xl bg-[#E56B42] px-6 font-extrabold text-white hover:bg-[#CC5932] active:scale-[0.98]">
             <a href={site.assets.pdf} target="_blank" rel="noreferrer">PDF-Leseprobe öffnen <Download className="size-4" aria-hidden="true" /></a>
           </Button>
         </div>
-        <div className="rounded-[2rem] bg-[#4A8BCE] p-7 text-white shadow-[0_18px_42px_rgba(74,139,206,0.2)] sm:p-9">
-          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#D9EAF7]">Möchtest du weiter entdecken?</p>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-none tracking-[-0.03em] sm:text-5xl">Kleine Impulse per Newsletter.</h2>
-          <p className="mt-5 leading-relaxed text-[#EFF8FD]">Auf der Newsletter-Seite findest du die transparente Anmeldung und die nächsten Informationen dazu.</p>
-          <Button asChild size="lg" className="mt-7 h-12 rounded-xl bg-white px-6 font-extrabold text-[#3372AF] shadow-none hover:bg-[#FCEDDD] active:scale-[0.98]">
-            <Link href="/newsletter">Zum Newsletter <ArrowRight className="size-4" aria-hidden="true" /></Link>
+        <div className="book-invitation rounded-[2rem] bg-[linear-gradient(135deg,#FDF6EE_0%,#EAF4FA_100%)] p-7 sm:p-9">
+          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">Möchtest du weiter entdecken?</p>
+          <h2 className="mt-3 font-display text-4xl font-semibold leading-none tracking-[-0.03em] text-[#3372AF] sm:text-5xl">Wenn du magst: kleine Impulse.</h2>
+          <p className="mt-5 leading-relaxed text-[#59616B]">Auf der Newsletter-Seite findest du die transparente Anmeldung und die nächsten Informationen dazu.</p>
+          <Button asChild size="lg" className="mt-7 h-12 rounded-xl bg-[#E56B42] px-6 font-extrabold text-white shadow-[0_12px_22px_rgba(229,107,66,0.20)] hover:bg-[#CC5932] active:scale-[0.98]">
+            <Link href="/newsletter">Zu den kleinen Impulsen <ArrowRight className="size-4" aria-hidden="true" /></Link>
           </Button>
         </div>
       </section>

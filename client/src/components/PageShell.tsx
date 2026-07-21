@@ -36,7 +36,7 @@ export function PageShell({ children }: PageShellProps) {
           </span>
         </a>
 
-        <nav aria-label="Seitennavigation" className="flex items-center gap-2 rounded-full border border-white/80 bg-white/70 p-1.5 shadow-[0_8px_24px_rgba(88,83,67,0.08)] backdrop-blur-sm">
+        <nav aria-label="Seitennavigation" className="flex items-center gap-1.5 rounded-full border border-white/90 bg-white/72 p-1.5 shadow-[0_8px_24px_rgba(88,83,67,0.08)] backdrop-blur-sm">
           <Link
             href="/leseprobe"
             className={`rounded-full px-3.5 py-2 text-sm font-bold transition-colors sm:px-4 ${
@@ -48,7 +48,7 @@ export function PageShell({ children }: PageShellProps) {
           <Link
             href="/newsletter"
             className={`rounded-full px-3.5 py-2 text-sm font-bold transition-colors sm:px-4 ${
-              location === "/newsletter" ? "bg-[#E56B42] text-white" : "text-[#3372AF] hover:bg-[#FFF0E8]"
+              location === "/newsletter" ? "bg-[#4A8BCE] text-white" : "text-[#3372AF] hover:bg-[#EAF4FA]"
             }`}
           >
             Newsletter
@@ -59,13 +59,13 @@ export function PageShell({ children }: PageShellProps) {
       <main className="relative z-10">{children}</main>
 
       <footer className="relative z-10 mx-auto mt-12 max-w-7xl px-5 pb-8 sm:px-8 lg:px-10">
-        <div className="flex flex-col gap-5 rounded-[2rem] border border-white/80 bg-white/70 px-6 py-6 text-sm shadow-[0_12px_30px_rgba(88,83,67,0.08)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="paper-footer flex flex-col gap-5 rounded-[1.5rem] px-6 py-6 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="max-w-xl leading-relaxed text-[#59616B]">
             Ein liebevoller Begleitraum rund um <strong className="font-extrabold text-[#3372AF]">Mein kleines Gefühls-Buch</strong>.
           </p>
           <a
             href={site.webadorHome}
-            className="inline-flex w-fit items-center gap-1.5 font-extrabold text-[#3372AF] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 transition-colors hover:text-[#E56B42]"
+            className="inline-flex w-fit items-center gap-1.5 font-extrabold text-[#3372AF] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 transition-colors hover:text-[#2D699F]"
           >
             Zur Hauptseite <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
