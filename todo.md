@@ -8,6 +8,6 @@
 - [x] Route `/leseprobe` als eigenständige, markenkonforme Leseproben-Landingpage mit PDF-Download bauen.
 - [x] Formularkonzept transparent gestalten und keine nicht verbundene Anmeldung vortäuschen.
 - [x] Desktop- und Mobilansicht visuell, funktional und barrierearm prüfen.
-- [ ] Neue Landingpages im getrennten GitHub-Repository bereitstellen und Live-URLs verifizieren.
-- [ ] Webador-Buttons „Newsletter“ und „Leseprobe“ auf die neuen Live-URLs setzen.
-- [ ] Alle Verbindungen, Download, Design und mobile Darstellung dreifach prüfen.
+- [x] Neue Landingpages im getrennten GitHub-Repository bereitstellen und Live-URLs verifizieren.
+- [x] Webador-Buttons „Newsletter“ und „Leseprobe“ auf die neuen Live-URLs setzen.
+- [x] Alle Verbindungen, Download, Design und mobile Darstellung dreifach prüfen.
