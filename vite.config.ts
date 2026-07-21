@@ -205,7 +205,14 @@ function vitePluginStorageProxy(): Plugin {
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
+const configuredBasePath = process.env.VITE_BASE_PATH?.trim();
+const publicBasePath = configuredBasePath
+  ? `${configuredBasePath.startsWith("/") ? "" : "/"}${configuredBasePath.replace(/\/$/, "")}/`
+  : "/";
+
 export default defineConfig({
+  // GitHub Pages serves this project below the repository name.
+  base: publicBasePath,
   plugins,
   resolve: {
     alias: {
@@ -219,6 +226,13 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: path.resolve(import.meta.dirname, "client/index.html"),
+        newsletter: path.resolve(import.meta.dirname, "client/newsletter/index.html"),
+        leseprobe: path.resolve(import.meta.dirname, "client/leseprobe/index.html"),
+      },
+    },
   },
   server: {
     port: 3000,
