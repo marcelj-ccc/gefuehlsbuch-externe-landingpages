@@ -14,8 +14,12 @@ import Newsletter from "./pages/Newsletter";
 import NotFound from "./pages/NotFound";
 
 function AppRoutes() {
-  const buildBase = import.meta.env.BASE_URL;
-  const pagesBase = buildBase === "/" || buildBase === "./" ? undefined : buildBase.replace(/\/$/, "");
+  const gitHubProjectBase = "/gefuehlsbuch-externe-landingpages";
+  const runsOnGitHubProjectPages =
+    typeof window !== "undefined" &&
+    window.location.hostname.endsWith(".github.io") &&
+    window.location.pathname.startsWith(gitHubProjectBase);
+  const pagesBase = runsOnGitHubProjectPages ? gitHubProjectBase : undefined;
 
   return (
     <WouterRouter base={pagesBase}>
