@@ -21,3 +21,12 @@
 - [ ] Aktualisierten Produktionsbuild über GitHub Pages veröffentlichen.
 - [ ] Custom Domain in GitHub Pages konfigurieren und die erforderlichen DNS-Einträge sicher umstellen.
 - [ ] HTTPS, Domain-Auflösung und alle zentralen Nutzerwege nach der Umschaltung prüfen.
+
+## Stabilität, Buchinhalt und rechtliche Vorbereitung
+
+- [ ] Aktuellen Stand der GitHub-Übertragung und der GitHub-Pages-Auslieferung kontrollieren.
+- [ ] Hauptseite um klare Buchinformationen, Zielgruppen und vollständige Kernwege ergänzen.
+- [ ] Newsletter-Feld als nutzbare Eingabe mit transparenter Verarbeitungslogik umsetzen.
+- [ ] Impressum, Datenschutzerklärung und Newsletter-Einwilligung anhand vollständiger Anbieterangaben vorbereiten.
+- [ ] Custom Domain, DNS, HTTPS und alle zentralen Links nach der Umstellung technisch verifizieren.
+- [ ] Neue Startseite nach der Domainumschaltung als alleinige offizielle Hauptseite bestätigen.
