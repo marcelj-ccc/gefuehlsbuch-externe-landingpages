@@ -34,3 +34,13 @@ Stand: 21. Juli 2026
 | Stilüberarbeitung – Buchseiten-Logik | Umgesetzt | Die wiederholten UI-Karten wurden zu luftigen Papierkapiteln mit Aquarellwaschungen, feinen Trennlinien und ruhigen Leseeinladungen weiterentwickelt. Herzorange erscheint jetzt nur an primären Handlungen; unterstützende Navigation und Wegweiser nutzen Gefühlsblau. |
 | Newsletter-Formular – technische Schutzprüfung | Live bestätigt | Das E-Mail-Feld der veröffentlichten Newsletter-Seite ist tatsächlich deaktiviert (`disabled = true`). Ohne eingerichteten Versanddienst werden somit keine personenbezogenen Daten versendet. |
 | GitHub Pages – finales Deployment | Bestätigt | Der Quellcommit `743d5be` und der Pages-Commit `463e1af` wurden erfolgreich übertragen. GitHub Pages meldet für Commit `463e1af` den Status `built`; die Live-Seite liefert die aktualisierte CSS-Datei `main-Cxvr6f7i.css` aus. |
+| Leseprobe – finale Zieladressen im Live-DOM | Bestätigt | Beide PDF-CTAs verweisen auf dieselbe GitHub-Release-PDF und öffnen in einem neuen Tab. Amazon verweist auf `https://amzn.eu/d/04d9bqwR`; die internen Wege führen zur Newsletter-Landingpage und zurück zur Webador-Hauptseite. |
+
+## Domain- und Hauptseitenmigration
+
+| Bereich | Ergebnis | Hinweis |
+|---|---|---|
+| GitHub Pages – Custom Domain | Noch nicht gesetzt | Das GitHub-Pages-Projekt veröffentlicht aktuell ausschließlich unter `https://marcelj-ccc.github.io/gefuehlsbuch-externe-landingpages/`; `custom_domain` ist leer. |
+| Hauptdomain – aktuelles DNS | Webador | `meinkleinesgefuehlsbuch.de` löst derzeit auf `35.204.150.5` auf; `www.meinkleinesgefuehlsbuch.de` ist per CNAME auf `website-rendering.webador.com` gesetzt. |
+| Hauptdomain – öffentliche Antwort | Webador / Offline-Modus | Die Apex-Domain leitet derzeit auf `www` weiter; die öffentliche Antwort ist `403`, da die Webador-Seite im Offline-/Passwortmodus liegt. |
+| DNS-Verwaltung | Extern | Die öffentliche DNS-Zone verweist auf Openprovider-Nameserver. Der spätere DNS-Wechsel muss daher beim dort verbundenen Domain- bzw. DNS-Anbieter erfolgen; Webador ist nicht das erforderliche Ziel für die neue GitHub-Pages-Zuordnung. |
