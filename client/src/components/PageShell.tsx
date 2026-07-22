@@ -1,6 +1,6 @@
 /**
- * Stil: Ruhiger Aquarell-Begleitraum. Dieses Layout trägt die visuelle Brücke
- * zwischen den zwei externen Seiten und der warmen Webador-Hauptseite.
+ * Stil: Ruhiger Aquarell-Begleitraum. Dieses Layout bildet die eigene Buchwelt
+ * als ruhige Hauptnavigation und verbindet Startseite, Leseprobe und Newsletter.
  */
 import { Link, useLocation } from "wouter";
 import { ArrowUpRight } from "lucide-react";
@@ -18,10 +18,10 @@ export function PageShell({ children }: PageShellProps) {
     <div className="min-h-screen overflow-hidden bg-[#FCEDDD] text-[#3E4854]">
       <div className="paper-grain pointer-events-none fixed inset-0 z-0 opacity-45" />
       <header className="relative z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
-        <a
-          href={site.webadorHome}
+        <Link
+          href="/"
           className="group flex items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#4A8BCE]/30"
-          aria-label="Zur Hauptseite von Mein kleines Gefühls-Buch"
+          aria-label="Zur Startseite von Mein kleines Gefühls-Buch"
         >
           <span className="grid size-11 place-items-center rounded-full bg-white/85 shadow-[0_8px_22px_rgba(88,83,67,0.12)] transition-transform duration-200 group-hover:-rotate-6 group-hover:scale-105">
             <img src={site.assets.mark} alt="" className="size-9 object-contain" />
@@ -34,7 +34,7 @@ export function PageShell({ children }: PageShellProps) {
               Gefühls-Buch
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav aria-label="Seitennavigation" className="flex items-center gap-1.5 rounded-full border border-white/90 bg-white/72 p-1.5 shadow-[0_8px_24px_rgba(88,83,67,0.08)] backdrop-blur-sm">
           <Link
@@ -63,12 +63,12 @@ export function PageShell({ children }: PageShellProps) {
           <p className="max-w-xl leading-relaxed text-[#59616B]">
             Ein liebevoller Begleitraum rund um <strong className="font-extrabold text-[#3372AF]">Mein kleines Gefühls-Buch</strong>.
           </p>
-          <a
-            href={site.webadorHome}
+          <Link
+            href="/"
             className="inline-flex w-fit items-center gap-1.5 font-extrabold text-[#3372AF] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 transition-colors hover:text-[#2D699F]"
           >
-            Zur Hauptseite <ArrowUpRight className="size-4" aria-hidden="true" />
-          </a>
+            Zur Startseite <ArrowUpRight className="size-4" aria-hidden="true" />
+          </Link>
         </div>
         <p className="px-2 pt-5 text-xs leading-relaxed text-[#737B83]">
           Die Newsletter-Anmeldung wird erst aktiviert, wenn der Versanddienst und die Datenschutzhinweise verbindlich eingerichtet sind.
