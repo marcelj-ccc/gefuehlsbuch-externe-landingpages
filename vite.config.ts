@@ -206,9 +206,12 @@ function vitePluginStorageProxy(): Plugin {
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 const configuredBasePath = process.env.VITE_BASE_PATH?.trim();
-const publicBasePath = configuredBasePath
-  ? `${configuredBasePath.startsWith("/") ? "" : "/"}${configuredBasePath.replace(/\/$/, "")}/`
-  : "/";
+// Relative Asset-URLs keep the same static build functional on project Pages and on a custom root domain.
+const publicBasePath = configuredBasePath === "." || configuredBasePath === "./"
+  ? "./"
+  : configuredBasePath
+    ? `${configuredBasePath.startsWith("/") ? "" : "/"}${configuredBasePath.replace(/\/$/, "")}/`
+    : "/";
 
 export default defineConfig({
   // GitHub Pages serves this project below the repository name.
