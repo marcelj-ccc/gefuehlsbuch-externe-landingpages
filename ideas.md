@@ -74,3 +74,17 @@ Alle Komponenten und Seiten erhalten zu Beginn einen kurzen Kommentar, der diese
 - **Herzorange bleibt eine Handlungssignatur:** `#E56B42` erscheint innerhalb eines Abschnitts nur an dessen primärer Handlungsaufforderung. Die bestehende Wortmarke und eindeutige Fehlermeldungen bleiben hiervon als Marken- bzw. Statusausnahmen unberührt.
 - **Abschnitte lesen sich wie Buchseiten:** Große Inhaltsbereiche werden als luftige Papierkapitel mit Aquarellwaschung, feinen Trennlinien und großzügigem Weißraum gestaltet. Wiederholte Standard-Kartenraster werden durch offene Kapitelspalten ersetzt.
 - **CTAs bleiben ruhig und einladend:** Prominente Einladungen nutzen Papier-, Nebelblau- und Pfirsichwaschungen statt großer flacher Werbebanner. Ihre Sprache bleibt konkret, sanft und frei von Kampagnenrhetorik.
+
+## Erweiterung zur Hauptseite
+
+Die Startseite wird vom bloßen Wegweiser zur zentralen **Buchwelt von „Mein kleines Gefühls-Buch“**. Sie erzählt eine kurze, ruhige Geschichte: Zuerst steht das Gefühl und der gemeinsame Moment im Mittelpunkt; danach folgt der konkrete Blick ins Buch; anschließend öffnen sich drei sanfte Wege zu Leseprobe, Kauf und Newsletter.
+
+| Kapitel | Aufgabe im Lesefluss | Vorrangige Handlung |
+|---|---|---|
+| Einstieg | Das Buch als liebevolle Einladung zum Wahrnehmen und Benennen von Gefühlen vorstellen. | Leseprobe öffnen |
+| Die Buchwelt | Zeigen, dass Gefühle da sein dürfen und Kreativität ein Gespräch eröffnen kann. | Buch kennenlernen |
+| Gemeinsam entdecken | Drei offene Kinderbuch-Kapitel zu Gefühlen, Gestaltung und Gespräch führen. | Leseprobe ansehen |
+| Für zu Hause und unterwegs | Die echte Leseprobe als vertrauensvollen nächsten Schritt anbieten; der Kauf bleibt eine klare, aber unaufdringliche Alternative. | PDF-Leseprobe öffnen |
+| In Verbindung bleiben | Den transparent vorbereiteten Newsletter als optionale Fortsetzung erklären. | Zum Newsletter |
+
+Die Wortmarke führt auf der neuen Hauptseite immer zur eigenen Startansicht. Frühere Webador-Verweise werden aus der Hauptnavigation entfernt; die bisherige Adresse dient während der Domainumstellung ausschließlich als technische Übergangsumgebung.
