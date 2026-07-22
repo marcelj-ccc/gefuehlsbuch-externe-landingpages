@@ -11,3 +11,13 @@
 - [x] Neue Landingpages im getrennten GitHub-Repository bereitstellen und Live-URLs verifizieren.
 - [x] Webador-Buttons „Newsletter“ und „Leseprobe“ auf die neuen Live-URLs setzen.
 - [x] Alle Verbindungen, Download, Design und mobile Darstellung dreifach prüfen.
+
+## Neue Hauptseite und eigene Domain
+
+- [ ] Aktuelle Domain-, DNS- und GitHub-Pages-Konfiguration prüfen und die Umstellungsrisiken dokumentieren.
+- [ ] Informationsarchitektur und Inhalte der gestalteten Hauptseite festlegen.
+- [ ] Neue Hauptseite im bestehenden Aquarell-Kinderbuchstil implementieren.
+- [ ] Hauptseite inklusive mobiler Darstellung, zentraler CTAs und externer Links testen.
+- [ ] Aktualisierten Produktionsbuild über GitHub Pages veröffentlichen.
+- [ ] Custom Domain in GitHub Pages konfigurieren und die erforderlichen DNS-Einträge sicher umstellen.
+- [ ] HTTPS, Domain-Auflösung und alle zentralen Nutzerwege nach der Umschaltung prüfen.
