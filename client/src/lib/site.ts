@@ -1,7 +1,7 @@
 /**
- * Stil: Ruhiger Aquarell-Begleitraum. Die Entwicklungsansicht lädt die geprüften
- * Manus-Assets; die veröffentlichten Seiten laden ausschließlich die Dateien des
- * eigenständigen GitHub-Releases.
+ * Stil: Ruhiger Aquarell-Begleitraum. Die Hauptseite und ihre Kapitel nutzen
+ * dieselben geprüften Aquarellassets; die frühere Webador-Adresse bleibt nur
+ * als technische Referenz für die kontrollierte Domainmigration erhalten.
  */
 const developmentAssets = {
   hero: "/manus-storage/gefuehlsbuch-hero-lesen_5c498801.png",
@@ -29,7 +29,7 @@ const runsOnGitHubPages =
 
 export const site = {
   name: "Mein kleines Gefühls-Buch",
-  webadorHome: "https://www.meinkleinesgefuehlsbuch.de/",
+  legacyWebadorHome: "https://www.meinkleinesgefuehlsbuch.de/",
   amazonBook: "https://amzn.eu/d/04d9bqwR",
   assets: runsOnGitHubPages ? publishedAssets : developmentAssets,
 } as const;
