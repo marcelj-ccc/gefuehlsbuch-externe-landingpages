@@ -1,7 +1,7 @@
 /**
- * Stil: Ruhiger Aquarell-Begleitraum. Die Routen bilden ausschließlich die
- * getrennten Zielseiten ab und halten ihre Navigation bewusst einfach.
- * Die Router-Basis berücksichtigt die spätere GitHub-Pages-Unteradresse.
+ * Stil: Ruhiger Aquarell-Begleitraum. Die Routen halten Hauptseite, Leseprobe
+ * und Newsletter als ruhige Buchwelt zusammen; die Router-Basis bleibt für
+ * GitHub Pages und die spätere eigene Domain gleichermaßen robust.
  */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,7 +14,8 @@ import Newsletter from "./pages/Newsletter";
 import NotFound from "./pages/NotFound";
 
 function AppRoutes() {
-  const pagesBase = import.meta.env.BASE_URL === "/" ? undefined : import.meta.env.BASE_URL.replace(/\/$/, "");
+  const buildBase = import.meta.env.BASE_URL;
+  const pagesBase = buildBase === "/" || buildBase === "./" ? undefined : buildBase.replace(/\/$/, "");
 
   return (
     <WouterRouter base={pagesBase}>
