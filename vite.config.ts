@@ -234,6 +234,8 @@ export default defineConfig({
         main: path.resolve(import.meta.dirname, "client/index.html"),
         newsletter: path.resolve(import.meta.dirname, "client/newsletter/index.html"),
         leseprobe: path.resolve(import.meta.dirname, "client/leseprobe/index.html"),
+        impressum: path.resolve(import.meta.dirname, "client/impressum/index.html"),
+        datenschutz: path.resolve(import.meta.dirname, "client/datenschutz/index.html"),
       },
     },
   },

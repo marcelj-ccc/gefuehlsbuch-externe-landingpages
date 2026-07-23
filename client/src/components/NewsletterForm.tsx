@@ -1,10 +1,12 @@
 /**
- * Stil: Ruhiger Aquarell-Begleitraum. Das Formular kommuniziert transparent
- * und verarbeitet keine personenbezogenen Daten, bevor eine echte Verbindung
- * zu Versanddienst und Datenschutzhinweisen konfiguriert wurde.
+ * Stil: Ruhiger Aquarell-Begleitraum. Das Formular ist aktiv: Anmeldungen
+ * werden über den FormSubmit-Endpoint als E-Mail an das Postfach
+ * info@meinkleinesgefuehlsbuch.de zugestellt. Einwilligung, Widerrufshinweis
+ * und Datenschutz-Link sind sichtbar direkt am Formular platziert.
  */
 import { FormEvent, useState } from "react";
 import { CheckCircle2, Loader2, LockKeyhole } from "lucide-react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { newsletterConfig } from "@/lib/site";
 
@@ -13,6 +15,7 @@ type Status = { kind: "idle" | "success" | "error"; message: string };
 export function NewsletterForm() {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [consent, setConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<Status>({ kind: "idle", message: "" });
@@ -33,6 +36,12 @@ export function NewsletterForm() {
       return;
     }
 
+    if (honeypot) {
+      // Automatisierte Eingabe erkannt – still ignorieren.
+      setStatus({ kind: "success", message: "Danke! Deine Anmeldung ist eingegangen." });
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus({ kind: "idle", message: "" });
 
@@ -40,7 +49,15 @@ export function NewsletterForm() {
       const response = await fetch(newsletterConfig.endpoint, {
         method: "POST",
         headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, email }),
+        body: JSON.stringify({
+          Vorname: firstName || "(nicht angegeben)",
+          email,
+          Einwilligung:
+            "Ja – Datenschutzhinweise gelesen, Newsletter-Anmeldung bestätigt (Double-Opt-in ausstehend)",
+          Zeitpunkt: new Date().toISOString(),
+          _subject: "Neue Newsletter-Anmeldung – Mein kleines Gefühls-Buch",
+          _template: "table",
+        }),
       });
 
       if (!response.ok) throw new Error("newsletter_submit_failed");
@@ -60,7 +77,9 @@ export function NewsletterForm() {
       <div className="mb-6 flex items-start gap-3 rounded-2xl bg-[#F4F9FC] px-4 py-3 text-sm leading-relaxed text-[#4B6677]">
         <LockKeyhole className="mt-0.5 size-4 shrink-0 text-[#4A8BCE]" aria-hidden="true" />
         <p>
-          {isConnected ? "Deine Anmeldung wird über den verbundenen Newsletter-Dienst verarbeitet." : "Der Versanddienst wird vor dem ersten Versand verbindlich eingerichtet."}
+          {isConnected
+            ? "Deine Anmeldung wird verschlüsselt übertragen und sicher an unser Postfach zugestellt. Du erhältst anschließend eine Bestätigung per E-Mail (Double-Opt-in)."
+            : "Der Versanddienst wird vor dem ersten Versand verbindlich eingerichtet."}
         </p>
       </div>
 
@@ -77,6 +96,18 @@ export function NewsletterForm() {
             placeholder="Wie dürfen wir dich ansprechen?"
           />
         </label>
+
+        {/* Honeypot-Feld gegen Spam-Bots – für Menschen unsichtbar */}
+        <input
+          type="text"
+          name="_honey"
+          value={honeypot}
+          onChange={(event) => setHoneypot(event.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="hidden"
+        />
 
         <label className="grid gap-2 text-sm font-extrabold text-[#3E4854]">
           E-Mail-Adresse
@@ -101,7 +132,18 @@ export function NewsletterForm() {
             className="mt-0.5 size-4 rounded border-[#B8C8C0] accent-[#4A8BCE] disabled:cursor-not-allowed"
           />
           <span>
-            Ich habe die Datenschutzhinweise gelesen und möchte den Newsletter erhalten. Meine Einwilligung kann ich jederzeit mit Wirkung für die Zukunft widerrufen.
+            Ich habe die{" "}
+            <Link
+              href={newsletterConfig.privacyUrl}
+              className="font-bold text-[#3372AF] underline decoration-[#B5CBD1] decoration-2 underline-offset-2 hover:text-[#2D699F]"
+            >
+              Datenschutzhinweise
+            </Link>{" "}
+            gelesen und möchte den Newsletter erhalten. Meine Einwilligung kann ich jederzeit mit Wirkung für die Zukunft widerrufen, z. B. per E-Mail an{" "}
+            <a href="mailto:info@meinkleinesgefuehlsbuch.de" className="font-bold text-[#3372AF] underline decoration-[#B5CBD1] decoration-2 underline-offset-2 hover:text-[#2D699F]">
+              info@meinkleinesgefuehlsbuch.de
+            </a>
+            .
           </span>
         </label>
 

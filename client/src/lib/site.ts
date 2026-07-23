@@ -24,17 +24,26 @@ const publishedAssets = {
   pdf: `${releaseAssetBase}/Leseprobe_Mein_kleines_Gefuehls_Buch.pdf`,
 } as const;
 
-const runsOnGitHubPages =
-  typeof window !== "undefined" && window.location.hostname.endsWith(".github.io");
+// Im Produktionsbuild werden immer die veröffentlichten Release-Assets
+// verwendet – unabhängig von der Domain (github.io, eigene Domain oder
+// Testumgebung). Die Dev-Assets gelten nur im lokalen Vite-Dev-Modus.
+const useDevelopmentAssets = import.meta.env.DEV;
 
 export const site = {
   name: "Mein kleines Gefühls-Buch",
   legacyWebadorHome: "https://www.meinkleinesgefuehlsbuch.de/",
   amazonBook: "https://amzn.eu/d/04d9bqwR",
-  assets: runsOnGitHubPages ? publishedAssets : developmentAssets,
+  assets: useDevelopmentAssets ? developmentAssets : publishedAssets,
 } as const;
 
+/**
+ * Newsletter-Zustellung: Der FormSubmit-AJAX-Endpoint stellt jede Anmeldung
+ * als E-Mail an info@meinkleinesgefuehlsbuch.de zu. Die Datenschutzhinweise
+ * liegen als eigene Route /datenschutz direkt auf dieser Website.
+ */
 export const newsletterConfig = {
-  endpoint: import.meta.env.VITE_NEWSLETTER_FORM_ENDPOINT?.trim() ?? "",
-  privacyUrl: import.meta.env.VITE_PRIVACY_URL?.trim() ?? "",
+  endpoint:
+    import.meta.env.VITE_NEWSLETTER_FORM_ENDPOINT?.trim() ||
+    "https://formsubmit.co/ajax/info@meinkleinesgefuehlsbuch.de",
+  privacyUrl: import.meta.env.VITE_PRIVACY_URL?.trim() || "/datenschutz",
 };

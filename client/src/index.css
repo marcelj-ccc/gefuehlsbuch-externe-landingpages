@@ -2,7 +2,8 @@
  * Stil: Ruhiger Aquarell-Begleitraum. Diese globalen Regeln schaffen die
  * papierhafte, ruhige Basis für die externen Landingpages und alle Komponenten.
  */
-@import url("https://fonts.googleapis.com/css2?family=Atma:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap");
+/* Schriften (Atma, Nunito) werden lokal gehostet: client/public/fonts/fonts.css,
+   eingebunden über die HTML-Einstiegsseiten – kein externer Google-Fonts-Abruf (DSGVO). */
 @import "tailwindcss";
 @import "tw-animate-css";
 

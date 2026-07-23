@@ -53,7 +53,7 @@ export default function Newsletter() {
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">Newsletter</p>
             <h2 className="mt-3 font-display text-4xl font-semibold leading-[0.98] tracking-[-0.03em] text-[#3372AF] sm:text-5xl">Ein kleiner Platz in deinem Postfach.</h2>
             <p className="mt-6 text-base leading-relaxed text-[#626A72]">
-              Du entscheidest jederzeit selbst, ob du weiterlesen möchtest. Die Anmeldung wird erst geöffnet, wenn Versand und Datenschutzhinweise vollständig eingerichtet sind.
+              Du entscheidest jederzeit selbst, ob du weiterlesen möchtest. Deine Anmeldung wird sicher übermittelt, und du kannst dich jederzeit mit einer kurzen Nachricht wieder abmelden.
             </p>
           </div>
           <div className="paper-chapter rounded-[2rem] p-2 sm:p-3"><NewsletterForm /></div>

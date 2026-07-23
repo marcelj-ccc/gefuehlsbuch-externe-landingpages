@@ -8,18 +8,22 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Router as WouterRouter, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Datenschutz from "./pages/Datenschutz";
 import Home from "./pages/Home";
+import Impressum from "./pages/Impressum";
 import Leseprobe from "./pages/Leseprobe";
 import Newsletter from "./pages/Newsletter";
 import NotFound from "./pages/NotFound";
 
 function AppRoutes() {
+  // Die Router-Basis wird direkt aus dem Pfad erkannt: Läuft die Seite unter
+  // dem Projekt-Unterpfad (GitHub Pages oder ein anderer Host mit gleichem
+  // Unterordner), wird dieser als Basis gesetzt; auf einer eigenen Domain im
+  // Root bleibt die Basis leer. Das hält alle bestehenden URLs stabil.
   const gitHubProjectBase = "/gefuehlsbuch-externe-landingpages";
-  const runsOnGitHubProjectPages =
-    typeof window !== "undefined" &&
-    window.location.hostname.endsWith(".github.io") &&
-    window.location.pathname.startsWith(gitHubProjectBase);
-  const pagesBase = runsOnGitHubProjectPages ? gitHubProjectBase : undefined;
+  const servedUnderProjectBase =
+    typeof window !== "undefined" && window.location.pathname.startsWith(gitHubProjectBase);
+  const pagesBase = servedUnderProjectBase ? gitHubProjectBase : undefined;
 
   return (
     <WouterRouter base={pagesBase}>
@@ -27,6 +31,8 @@ function AppRoutes() {
         <Route path="/" component={Home} />
         <Route path="/leseprobe" component={Leseprobe} />
         <Route path="/newsletter" component={Newsletter} />
+        <Route path="/impressum" component={Impressum} />
+        <Route path="/datenschutz" component={Datenschutz} />
         <Route component={NotFound} />
       </Switch>
     </WouterRouter>

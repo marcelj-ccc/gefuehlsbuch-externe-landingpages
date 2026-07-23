@@ -70,9 +70,30 @@ export function PageShell({ children }: PageShellProps) {
             Zur Startseite <ArrowUpRight className="size-4" aria-hidden="true" />
           </Link>
         </div>
-        <p className="px-2 pt-5 text-xs leading-relaxed text-[#737B83]">
-          Die Newsletter-Anmeldung wird erst aktiviert, wenn der Versanddienst und die Datenschutzhinweise verbindlich eingerichtet sind.
-        </p>
+        <nav
+          aria-label="Rechtliche Informationen"
+          className="flex flex-wrap items-center gap-x-5 gap-y-2 px-2 pt-5 text-xs leading-relaxed text-[#737B83]"
+        >
+          <Link
+            href="/impressum"
+            className="font-bold text-[#59616B] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 transition-colors hover:text-[#3372AF]"
+          >
+            Impressum
+          </Link>
+          <Link
+            href="/datenschutz"
+            className="font-bold text-[#59616B] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 transition-colors hover:text-[#3372AF]"
+          >
+            Datenschutz
+          </Link>
+          <a
+            href="mailto:info@meinkleinesgefuehlsbuch.de"
+            className="font-bold text-[#59616B] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 transition-colors hover:text-[#3372AF]"
+          >
+            Presse &amp; Kontakt
+          </a>
+          <span className="text-[#8A929A]">© {new Date().getFullYear()} Emi Winter · Mein kleines Gefühls-Buch</span>
+        </nav>
       </footer>
     </div>
   );
