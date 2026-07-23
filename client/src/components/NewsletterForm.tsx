@@ -52,8 +52,10 @@ export function NewsletterForm() {
         body: JSON.stringify({
           Vorname: firstName || "(nicht angegeben)",
           email,
+          _replyto: email,
+          _autoresponder: "Vielen Dank für dein Interesse an 'Mein kleines Gefühls-Buch'! Wir haben deine Newsletter-Anmeldung erhalten. Dies ist eine automatische Bestätigung. Wir freuen uns, dich bald mit neuen Impulsen zu begleiten.",
           Einwilligung:
-            "Ja – Datenschutzhinweise gelesen, Newsletter-Anmeldung bestätigt (Double-Opt-in ausstehend)",
+            "Ja – Datenschutzhinweise gelesen, Newsletter-Anmeldung bestätigt.",
           Zeitpunkt: new Date().toISOString(),
           _subject: "Neue Newsletter-Anmeldung – Mein kleines Gefühls-Buch",
           _template: "table",
