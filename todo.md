@@ -14,19 +14,19 @@
 
 ## Neue Hauptseite und eigene Domain
 
-- [ ] Aktuelle Domain-, DNS- und GitHub-Pages-Konfiguration prüfen und die Umstellungsrisiken dokumentieren.
-- [ ] Informationsarchitektur und Inhalte der gestalteten Hauptseite festlegen.
-- [ ] Neue Hauptseite im bestehenden Aquarell-Kinderbuchstil implementieren.
-- [ ] Hauptseite inklusive mobiler Darstellung, zentraler CTAs und externer Links testen.
-- [ ] Aktualisierten Produktionsbuild über GitHub Pages veröffentlichen.
+- [x] Aktuelle Domain-, DNS- und GitHub-Pages-Konfiguration geprüft und dokumentiert.
+- [x] Informationsarchitektur und Inhalte der Hauptseite festgelegt und umgesetzt.
+- [x] Neue Hauptseite im Aquarell-Kinderbuchstil implementiert (Route /).
+- [x] Hauptseite inklusive mobiler Darstellung, zentraler CTAs und externer Links getestet.
+- [x] Produktionsbuild über GitHub Pages veröffentlicht.
 - [ ] Custom Domain in GitHub Pages konfigurieren und die erforderlichen DNS-Einträge sicher umstellen.
 - [ ] HTTPS, Domain-Auflösung und alle zentralen Nutzerwege nach der Umschaltung prüfen.
 
 ## Stabilität, Buchinhalt und rechtliche Vorbereitung
 
-- [ ] Aktuellen Stand der GitHub-Übertragung und der GitHub-Pages-Auslieferung kontrollieren.
-- [ ] Hauptseite um klare Buchinformationen, Zielgruppen und vollständige Kernwege ergänzen.
-- [ ] Newsletter-Feld als nutzbare Eingabe mit transparenter Verarbeitungslogik umsetzen.
-- [ ] Impressum, Datenschutzerklärung und Newsletter-Einwilligung anhand vollständiger Anbieterangaben vorbereiten.
+- [x] Aktuellen Stand der GitHub-Übertragung und der GitHub-Pages-Auslieferung kontrolliert.
+- [x] Hauptseite um klare Buchinformationen, Zielgruppen und vollständige Kernwege ergänzt.
+- [x] Newsletter-Formular aktiviert: FormSubmit-Endpoint, Betreiber-Benachrichtigung und Nutzer-Bestätigungsmail konfiguriert.
+- [x] Impressum, Datenschutzerklärung und Newsletter-Einwilligung vollständig implementiert.
 - [ ] Custom Domain, DNS, HTTPS und alle zentralen Links nach der Umstellung technisch verifizieren.
 - [ ] Neue Startseite nach der Domainumschaltung als alleinige offizielle Hauptseite bestätigen.

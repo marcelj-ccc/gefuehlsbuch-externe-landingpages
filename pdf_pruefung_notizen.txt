@@ -1,0 +1,13 @@
+Prüfung der Leseprobe-PDF (/tmp/leseprobe.pdf), visuell anhand der Seitenbilder:
+- Seite 1: Titelseite korrekt.
+- Seite 2: Vorwortseite korrekt lesbar.
+- Seite 3: Überschrift "SO KANN SICH FREUDE ANFÜHLEN" korrekt.
+- Seite 4: FEHLER GEFUNDEN. Überschrift lautet "SO KANN SICH ANGST ANFÜHLEN", der restliche Seiteninhalt beschreibt jedoch Wut ("WUT KANN STARK SEIN. DEIN KÖRPER FÜHLT SICH HEISS AN."). Korrektur erforderlich zu: "SO KANN SICH WUT ANFÜHLEN".
+- Seite 5: "JEDES GEFÜHL IST ERLAUBT" korrekt.
+Quelle: visuelle Prüfung der PDF-Seiten per Dateiansicht am 30.07.2026.
+
+Zusätzliche technische Feststellungen:
+- Der Textfehler ist NICHT im React-/TypeScript-Code des Repositories auffindbar.
+- Der Fehler befindet sich im veröffentlichten PDF-Asset der Leseprobe.
+- Das PDF wird aus dem GitHub-Release assets-v1 geladen.
+- Für die Korrektur muss das PDF-Asset selbst ersetzt oder neu erzeugt werden.

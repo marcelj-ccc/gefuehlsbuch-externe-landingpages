@@ -113,7 +113,7 @@ export default function Home() {
         <div className="book-invitation order-1 rounded-[2rem] bg-[linear-gradient(135deg,#FDF6EE_0%,#F8FBFC_58%,#EAF4FA_100%)] p-7 sm:p-9 lg:order-2">
           <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">In Verbindung bleiben</p>
           <h2 className="mt-3 font-display text-4xl font-semibold leading-none tracking-[-0.03em] text-[#3372AF] sm:text-5xl">Kleine Impulse, wenn es etwas zu teilen gibt.</h2>
-          <p className="mt-5 max-w-xl leading-relaxed text-[#59616B]">Die Newsletter-Anmeldung ist transparent vorbereitet und wird erst freigeschaltet, wenn Versand und Datenschutzhinweise verbindlich eingerichtet sind.</p>
+          <p className="mt-5 max-w-xl leading-relaxed text-[#59616B]">Erhalte ausgewählte Gedanken, Gesprächsimpulse und Neuigkeiten rund ums Buch direkt in dein Postfach – ruhig, liebevoll und nur dann, wenn es wirklich etwas zu teilen gibt.</p>
           <Button asChild size="lg" className="mt-7 h-12 rounded-xl bg-[#E56B42] px-6 font-extrabold text-white shadow-[0_12px_22px_rgba(229,107,66,0.20)] hover:bg-[#CC5932] active:scale-[0.98]">
             <Link href="/newsletter">Zu den kleinen Impulsen <ArrowRight className="size-4" aria-hidden="true" /></Link>
           </Button>
