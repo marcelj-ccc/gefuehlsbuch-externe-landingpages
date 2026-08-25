@@ -5,7 +5,7 @@
  */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Router as WouterRouter, Switch } from "wouter";
+import { Route, Router as WouterRouter, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Datenschutz from "./pages/Datenschutz";
@@ -13,7 +13,28 @@ import Home from "./pages/Home";
 import Impressum from "./pages/Impressum";
 import Leseprobe from "./pages/Leseprobe";
 import Newsletter from "./pages/Newsletter";
+import { SeoHead } from "./components/SeoHead";
 import NotFound from "./pages/NotFound";
+
+function RouteSeo() {
+  const [location] = useLocation();
+  const seoByPath: Record<string, { title: string; description: string }> = {
+    "/": {
+      title: "Buch über Gefühle für Kinder | Mein kleines Gefühls-Buch",
+      description: "Mitmachbuch für Kinder von 4–8 Jahren: Gefühle benennen, Wut begleiten und gemeinsam ins Gespräch kommen. Entdecke Mein kleines Gefühls-Buch.",
+    },
+    "/leseprobe": {
+      title: "Leseprobe: Buch über Gefühle für Kinder | Mein kleines Gefühls-Buch",
+      description: "Sieh dir ausgewählte Buchseiten an: Das Mitmachbuch unterstützt Kinder von 4–8 Jahren dabei, Gefühle wahrzunehmen, zu benennen und darüber zu sprechen.",
+    },
+    "/newsletter": {
+      title: "Elternimpulse zu Kindergefühlen | Mein kleines Gefühls-Buch",
+      description: "Erhalte ausgewählte Gesprächsimpulse und Buchneuigkeiten für den Familienalltag – ruhig, kindgerecht und mit konkreten Ideen rund um Kindergefühle.",
+    },
+  };
+  const seo = seoByPath[location] ?? seoByPath["/"];
+  return <SeoHead title={seo.title} description={seo.description} path={location} />;
+}
 
 function AppRoutes() {
   // Die Router-Basis wird direkt aus dem Pfad erkannt: Läuft die Seite unter
@@ -27,6 +48,7 @@ function AppRoutes() {
 
   return (
     <WouterRouter base={pagesBase}>
+      <RouteSeo />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/leseprobe" component={Leseprobe} />
