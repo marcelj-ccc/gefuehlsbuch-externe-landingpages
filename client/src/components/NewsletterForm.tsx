@@ -1,47 +1,25 @@
 /**
- * Stil: Ruhiger Aquarell-Begleitraum. Anmeldungen werden über FormSubmit an
- * info@meinkleinesgefuehlsbuch.de zugestellt. FormSubmit kann eine automatische
- * Bestätigung nur im Standard-Formularmodus mit aktiviertem Spam-Schutz senden.
+ * Stil: Ruhiger Aquarell-Begleitraum. Die Anmeldung wird an den eigenen,
+ * kostenlosen Apps-Script-Endpunkt übermittelt. Dieser versendet die
+ * Bestätigung an die anmeldende Person und die Betreiberbenachrichtigung.
  */
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { CheckCircle2, Loader2, LockKeyhole } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { newsletterConfig } from "@/lib/site";
 
 type Status = { kind: "idle" | "success" | "error"; message: string };
+type DeliveryMessage = {
+  type?: string;
+  ok?: boolean;
+  error?: "invalid_submission" | "daily_limit" | "delivery_failed";
+};
 
-const autoresponse = `Hallo{{firstName}},
-
-vielen Dank für deine Anmeldung zum Newsletter von „Mein kleines Gefühls-Buch“!
-
-Wir freuen uns sehr, dich bald mit ausgewählten Gedanken, Gesprächsimpulsen und Neuigkeiten rund ums Buch zu begleiten. Du erhältst unsere Nachrichten nur dann, wenn es wirklich etwas zu teilen gibt – ruhig, liebevoll und ohne Druck.
-
-Du kannst deine Einwilligung jederzeit widerrufen, indem du uns eine kurze Nachricht an info@meinkleinesgefuehlsbuch.de sendest.
-
-Herzliche Grüße,
-Emi Winter
-Mein kleines Gefühls-Buch`;
-
-function hasConfirmationQuery() {
-  return typeof window !== "undefined" && new URLSearchParams(window.location.search).get("newsletter") === "confirmed";
-}
-
-function confirmationUrl() {
-  const configuredUrl = import.meta.env.VITE_NEWSLETTER_CONFIRMATION_URL?.trim();
-  if (configuredUrl) return configuredUrl;
-
-  if (typeof window !== "undefined") {
-    // Die Rückleitung muss die aktuell geöffnete Newsletter-Route behalten.
-    // Relative Build-Pfade würden sonst aus /newsletter/ fälschlich /newsletter/newsletter machen.
-    const url = new URL(window.location.href);
-    url.search = "newsletter=confirmed";
-    url.hash = "";
-    return url.toString();
-  }
-
-  return "/newsletter?newsletter=confirmed";
-}
+const DELIVERY_ORIGINS = new Set([
+  "https://script.google.com",
+  "https://script.googleusercontent.com",
+]);
 
 export function NewsletterForm() {
   const [firstName, setFirstName] = useState("");
@@ -49,15 +27,38 @@ export function NewsletterForm() {
   const [honeypot, setHoneypot] = useState("");
   const [consent, setConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<Status>(() =>
-    hasConfirmationQuery()
-      ? {
-          kind: "success",
-          message: "Danke für deine Anmeldung! Deine Bestätigungsmail wurde an dein Postfach gesendet. Bitte prüfe bei Bedarf auch deinen Spam-Ordner.",
-        }
-      : { kind: "idle", message: "" },
-  );
+  const [status, setStatus] = useState<Status>({ kind: "idle", message: "" });
   const isConnected = Boolean(newsletterConfig.endpoint && newsletterConfig.privacyUrl);
+
+  useEffect(() => {
+    function onDeliveryMessage(event: MessageEvent<DeliveryMessage>) {
+      if (!DELIVERY_ORIGINS.has(event.origin) || event.data?.type !== "newsletter-delivery") return;
+
+      setIsSubmitting(false);
+      if (event.data.ok) {
+        setFirstName("");
+        setEmail("");
+        setHoneypot("");
+        setConsent(false);
+        setStatus({
+          kind: "success",
+          message: "Danke für deine Anmeldung! Deine Bestätigungsmail wurde soeben an dein Postfach gesendet. Bitte prüfe bei Bedarf auch deinen Spam-Ordner.",
+        });
+        return;
+      }
+
+      const message =
+        event.data.error === "daily_limit"
+          ? "Die Anmeldung ist heute vorübergehend nicht möglich. Bitte versuche es morgen erneut."
+          : event.data.error === "invalid_submission"
+            ? "Bitte prüfe deine Angaben und bestätige die Datenschutzhinweise."
+            : "Die Bestätigungsmail konnte gerade nicht versendet werden. Bitte versuche es in wenigen Minuten erneut.";
+      setStatus({ kind: "error", message });
+    }
+
+    window.addEventListener("message", onDeliveryMessage);
+    return () => window.removeEventListener("message", onDeliveryMessage);
+  }, []);
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     if (!isConnected) {
@@ -77,7 +78,7 @@ export function NewsletterForm() {
 
     if (honeypot) {
       event.preventDefault();
-      // Automatisierte Eingabe erkannt – still ignorieren.
+      // Automatisierte Eingabe erkannt – keine Daten und keine E-Mail versenden.
       setStatus({ kind: "success", message: "Danke! Deine Anmeldung ist eingegangen." });
       return;
     }
@@ -89,30 +90,20 @@ export function NewsletterForm() {
       return;
     }
 
-    // Kein preventDefault: FormSubmit benötigt eine reguläre Formularübermittlung,
-    // damit die automatische Bestätigung zuverlässig versendet werden kann.
     setIsSubmitting(true);
     setStatus({ kind: "idle", message: "" });
   }
-
-  const trimmedFirstName = firstName.trim();
-  const confirmationMessage = autoresponse.replace("{{firstName}}", trimmedFirstName ? ` ${trimmedFirstName}` : "");
 
   return (
     <form
       action={newsletterConfig.endpoint}
       method="POST"
+      target="newsletter-delivery-frame"
       onSubmit={onSubmit}
       className="rounded-[1.55rem] border border-white/90 bg-white/88 p-6 shadow-[0_18px_45px_rgba(73,95,109,0.12)] sm:p-8"
       noValidate
     >
-      <input type="hidden" name="_subject" value={`Neue Newsletter-Anmeldung – Mein kleines Gefühls-Buch${trimmedFirstName ? ` (${trimmedFirstName})` : ""}`} />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_replyto" value={email.trim()} />
-      <input type="hidden" name="_autoresponse" value={confirmationMessage} />
-      <input type="hidden" name="_next" value={confirmationUrl()} />
-      <input type="hidden" name="Einwilligung" value="Ja – Datenschutzhinweise gelesen, Newsletter-Anmeldung bestätigt" />
-      <input type="hidden" name="Zeitpunkt" value={new Date().toLocaleString("de-DE", { timeZone: "Europe/Berlin" })} />
+      <iframe name="newsletter-delivery-frame" title="Newsletter-Versandstatus" className="hidden" aria-hidden="true" />
 
       <div className="mb-6 flex items-start gap-3 rounded-2xl bg-[#F4F9FC] px-4 py-3 text-sm leading-relaxed text-[#4B6677]">
         <LockKeyhole className="mt-0.5 size-4 shrink-0 text-[#4A8BCE]" aria-hidden="true" />
@@ -128,7 +119,7 @@ export function NewsletterForm() {
           Vorname <span className="font-medium text-[#737B83]">(optional)</span>
           <input
             type="text"
-            name="Vorname"
+            name="firstName"
             value={firstName}
             onChange={(event) => setFirstName(event.target.value)}
             disabled={!isConnected || isSubmitting}
@@ -140,7 +131,7 @@ export function NewsletterForm() {
 
         <input
           type="text"
-          name="_honey"
+          name="website"
           value={honeypot}
           onChange={(event) => setHoneypot(event.target.value)}
           tabIndex={-1}
@@ -167,6 +158,8 @@ export function NewsletterForm() {
         <label className="flex cursor-pointer items-start gap-3 rounded-2xl bg-[#FFF6F0] px-4 py-4 text-sm leading-relaxed text-[#59616B]">
           <input
             type="checkbox"
+            name="consent"
+            value="yes"
             checked={consent}
             onChange={(event) => setConsent(event.target.checked)}
             disabled={!isConnected || isSubmitting}

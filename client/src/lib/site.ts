@@ -37,14 +37,13 @@ export const site = {
 } as const;
 
 /**
- * Newsletter-Zustellung: Der Standard-FormSubmit-Endpoint stellt jede Anmeldung
- * als E-Mail an info@meinkleinesgefuehlsbuch.de zu und kann die erforderliche
- * automatische Bestätigung an die anmeldende Person versenden. Die Datenschutzhinweise
- * liegen als eigene Route /datenschutz direkt auf dieser Website.
+ * Newsletter-Zustellung: Ein eigener kostenloser Apps-Script-Endpunkt versendet
+ * die Bestätigung an die anmeldende Person und die Betreiberbenachrichtigung.
+ * Die Datenschutzhinweise liegen als eigene Route /datenschutz auf dieser Website.
  */
 export const newsletterConfig = {
   endpoint:
     import.meta.env.VITE_NEWSLETTER_FORM_ENDPOINT?.trim() ||
-    "https://formsubmit.co/info@meinkleinesgefuehlsbuch.de",
+    "https://script.google.com/macros/s/AKfycbzr4z2X7aqdynXsGMafKGU3_UWZd922aglGsDJvGKkIMkWamkrtjVP7XqPFxjPe9tU/exec",
   privacyUrl: import.meta.env.VITE_PRIVACY_URL?.trim() || "/datenschutz",
 };
