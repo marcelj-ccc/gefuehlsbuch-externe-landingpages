@@ -1,14 +1,7 @@
 /**
- * Stil: Ruhiger Aquarell-Begleitraum. Das Formular ist aktiv: Anmeldungen
- * werden über den FormSubmit-Endpoint als E-Mail an das Postfach
- * info@meinkleinesgefuehlsbuch.de zugestellt.
- *
- * Beide Seiten werden bedient:
- * - Betreiber: erhält Benachrichtigung mit allen Anmeldedaten
- * - Nutzer: erhält automatisch eine Bestätigungsmail (_autoresponder)
- *
- * Sicherheit: Honeypot-Feld, E-Mail-Validierung, Consent-Pflicht.
- * DSGVO: Einwilligung, Datenschutz-Link, Widerrufshinweis direkt am Formular.
+ * Stil: Ruhiger Aquarell-Begleitraum. Anmeldungen werden über FormSubmit an
+ * info@meinkleinesgefuehlsbuch.de zugestellt. FormSubmit kann eine automatische
+ * Bestätigung nur im Standard-Formularmodus mit aktiviertem Spam-Schutz senden.
  */
 import { FormEvent, useState } from "react";
 import { CheckCircle2, Loader2, LockKeyhole } from "lucide-react";
@@ -18,18 +11,53 @@ import { newsletterConfig } from "@/lib/site";
 
 type Status = { kind: "idle" | "success" | "error"; message: string };
 
+const autoresponse = `Hallo{{firstName}},
+
+vielen Dank für deine Anmeldung zum Newsletter von „Mein kleines Gefühls-Buch“!
+
+Wir freuen uns sehr, dich bald mit ausgewählten Gedanken, Gesprächsimpulsen und Neuigkeiten rund ums Buch zu begleiten. Du erhältst unsere Nachrichten nur dann, wenn es wirklich etwas zu teilen gibt – ruhig, liebevoll und ohne Druck.
+
+Du kannst deine Einwilligung jederzeit widerrufen, indem du uns eine kurze Nachricht an info@meinkleinesgefuehlsbuch.de sendest.
+
+Herzliche Grüße,
+Emi Winter
+Mein kleines Gefühls-Buch`;
+
+function hasConfirmationQuery() {
+  return typeof window !== "undefined" && new URLSearchParams(window.location.search).get("newsletter") === "confirmed";
+}
+
+function confirmationUrl() {
+  const configuredUrl = import.meta.env.VITE_NEWSLETTER_CONFIRMATION_URL?.trim();
+  if (configuredUrl) return configuredUrl;
+
+  if (typeof window !== "undefined") {
+    const path = `${import.meta.env.BASE_URL}newsletter?newsletter=confirmed`;
+    return new URL(path, window.location.origin).toString();
+  }
+
+  return "/newsletter?newsletter=confirmed";
+}
+
 export function NewsletterForm() {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [consent, setConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<Status>({ kind: "idle", message: "" });
+  const [status, setStatus] = useState<Status>(() =>
+    hasConfirmationQuery()
+      ? {
+          kind: "success",
+          message: "Danke für deine Anmeldung! Deine Bestätigungsmail wurde an dein Postfach gesendet. Bitte prüfe bei Bedarf auch deinen Spam-Ordner.",
+        }
+      : { kind: "idle", message: "" },
+  );
   const isConnected = Boolean(newsletterConfig.endpoint && newsletterConfig.privacyUrl);
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
     if (!isConnected) {
+      event.preventDefault();
       setStatus({
         kind: "idle",
         message: "Die Anmeldung wird gerade datenschutzkonform eingerichtet. Bis dahin werden über dieses Formular keine Daten versendet.",
@@ -38,78 +66,50 @@ export function NewsletterForm() {
     }
 
     if (!consent) {
+      event.preventDefault();
       setStatus({ kind: "error", message: "Bitte bestätige zuerst die Datenschutzhinweise." });
       return;
     }
 
     if (honeypot) {
+      event.preventDefault();
       // Automatisierte Eingabe erkannt – still ignorieren.
       setStatus({ kind: "success", message: "Danke! Deine Anmeldung ist eingegangen." });
       return;
     }
 
-    // E-Mail-Format prüfen
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.trim())) {
+      event.preventDefault();
       setStatus({ kind: "error", message: "Bitte gib eine gültige E-Mail-Adresse ein." });
       return;
     }
 
+    // Kein preventDefault: FormSubmit benötigt eine reguläre Formularübermittlung,
+    // damit die automatische Bestätigung zuverlässig versendet werden kann.
     setIsSubmitting(true);
     setStatus({ kind: "idle", message: "" });
-
-    try {
-      // FormSubmit AJAX-Endpoint:
-      // - Sendet Benachrichtigung an info@meinkleinesgefuehlsbuch.de (Betreiber)
-      // - _autoresponder sendet automatisch eine Bestätigungsmail an den Nutzer (_replyto)
-      const payload = {
-        Vorname: firstName.trim() || "(nicht angegeben)",
-        "E-Mail": email.trim(),
-        Einwilligung: "Ja – Datenschutzhinweise gelesen, Newsletter-Anmeldung bestätigt",
-        Zeitpunkt: new Date().toLocaleString("de-DE", { timeZone: "Europe/Berlin" }),
-        // FormSubmit-Steuerfelder
-        _replyto: email.trim(),
-        _subject: `Neue Newsletter-Anmeldung – Mein kleines Gefühls-Buch${firstName.trim() ? ` (${firstName.trim()})` : ""}`,
-        _template: "table",
-        _captcha: "false",
-        // Autoresponder: Diese Nachricht geht automatisch an den Nutzer (_replyto)
-        _autoresponder: `Hallo${firstName.trim() ? ` ${firstName.trim()}` : ""},\n\nvielen Dank für deine Anmeldung zum Newsletter von „Mein kleines Gefühls-Buch"!\n\nWir freuen uns sehr, dich bald mit ausgewählten Gedanken, Gesprächsimpulsen und Neuigkeiten rund ums Buch zu begleiten. Du erhältst unsere Nachrichten nur dann, wenn es wirklich etwas zu teilen gibt – ruhig, liebevoll und ohne Druck.\n\nDu kannst deine Einwilligung jederzeit widerrufen, indem du uns eine kurze Nachricht an info@meinkleinesgefuehlsbuch.de sendest.\n\nHerzliche Grüße,\nEmi Winter\nMein kleines Gefühls-Buch`,
-      };
-
-      const response = await fetch(newsletterConfig.endpoint, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) throw new Error("newsletter_submit_failed");
-      const data = await response.json().catch(() => ({ success: "true" }));
-      if (data.success === "false") throw new Error("newsletter_submit_rejected");
-
-      setStatus({
-        kind: "success",
-        message:
-          "Danke für deine Anmeldung! Du erhältst in Kürze eine Bestätigungsmail. Bitte prüfe auch deinen Spam-Ordner.",
-      });
-      setFirstName("");
-      setEmail("");
-      setConsent(false);
-    } catch {
-      setStatus({
-        kind: "error",
-        message:
-          "Das hat gerade nicht geklappt. Bitte versuche es in wenigen Minuten noch einmal oder schreibe uns direkt an info@meinkleinesgefuehlsbuch.de.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
   }
 
+  const trimmedFirstName = firstName.trim();
+  const confirmationMessage = autoresponse.replace("{{firstName}}", trimmedFirstName ? ` ${trimmedFirstName}` : "");
+
   return (
-    <form onSubmit={onSubmit} className="rounded-[1.55rem] border border-white/90 bg-white/88 p-6 shadow-[0_18px_45px_rgba(73,95,109,0.12)] sm:p-8" noValidate>
+    <form
+      action={newsletterConfig.endpoint}
+      method="POST"
+      onSubmit={onSubmit}
+      className="rounded-[1.55rem] border border-white/90 bg-white/88 p-6 shadow-[0_18px_45px_rgba(73,95,109,0.12)] sm:p-8"
+      noValidate
+    >
+      <input type="hidden" name="_subject" value={`Neue Newsletter-Anmeldung – Mein kleines Gefühls-Buch${trimmedFirstName ? ` (${trimmedFirstName})` : ""}`} />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_replyto" value={email.trim()} />
+      <input type="hidden" name="_autoresponse" value={confirmationMessage} />
+      <input type="hidden" name="_next" value={confirmationUrl()} />
+      <input type="hidden" name="Einwilligung" value="Ja – Datenschutzhinweise gelesen, Newsletter-Anmeldung bestätigt" />
+      <input type="hidden" name="Zeitpunkt" value={new Date().toLocaleString("de-DE", { timeZone: "Europe/Berlin" })} />
+
       <div className="mb-6 flex items-start gap-3 rounded-2xl bg-[#F4F9FC] px-4 py-3 text-sm leading-relaxed text-[#4B6677]">
         <LockKeyhole className="mt-0.5 size-4 shrink-0 text-[#4A8BCE]" aria-hidden="true" />
         <p>
@@ -124,6 +124,7 @@ export function NewsletterForm() {
           Vorname <span className="font-medium text-[#737B83]">(optional)</span>
           <input
             type="text"
+            name="Vorname"
             value={firstName}
             onChange={(event) => setFirstName(event.target.value)}
             disabled={!isConnected || isSubmitting}
@@ -133,7 +134,6 @@ export function NewsletterForm() {
           />
         </label>
 
-        {/* Honeypot-Feld gegen Spam-Bots – für Menschen unsichtbar */}
         <input
           type="text"
           name="_honey"
@@ -149,6 +149,7 @@ export function NewsletterForm() {
           E-Mail-Adresse <span className="text-[#E56B42]">*</span>
           <input
             type="email"
+            name="email"
             required
             value={email}
             onChange={(event) => setEmail(event.target.value)}
