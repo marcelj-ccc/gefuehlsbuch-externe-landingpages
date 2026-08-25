@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kleinesbuch-m2jwekcg.manus.space/sitemap.xml
