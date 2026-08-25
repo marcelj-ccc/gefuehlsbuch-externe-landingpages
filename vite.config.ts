@@ -211,7 +211,7 @@ const publicBasePath = configuredBasePath === "." || configuredBasePath === "./"
   ? "./"
   : configuredBasePath
     ? `${configuredBasePath.startsWith("/") ? "" : "/"}${configuredBasePath.replace(/\/$/, "")}/`
-    : "/";
+    : "./";
 
 export default defineConfig({
   // GitHub Pages serves this project below the repository name.
