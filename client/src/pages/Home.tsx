@@ -6,6 +6,7 @@ import { ArrowRight, BookOpen, Heart, MessageCircleHeart, PencilLine } from "luc
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
+import { EmotionMotion } from "@/components/EmotionMotion";
 import { site } from "@/lib/site";
 
 const bookChapters = [
@@ -47,7 +48,7 @@ export default function Home() {
         <div className="relative mx-auto w-full max-w-lg">
           <div className="absolute -right-10 top-5 size-44 rounded-full bg-[#F9CDBC]/45 blur-2xl" />
           <div className="absolute -bottom-10 -left-8 size-44 rounded-full bg-[#B5CBD1]/45 blur-2xl" />
-          <img src={site.assets.hero} alt="Kind und erwachsene Bezugsperson betrachten gemeinsam ein Bilderbuch" className="relative rounded-[2.5rem] shadow-[0_24px_55px_rgba(108,86,72,0.16)]" />
+          <img src={site.assets.hero} alt="Kind und Bezugsperson entdecken gemeinsam eine liebevolle Gefühlswelt" width="1800" height="1330" fetchPriority="high" className="relative rounded-[2.5rem] shadow-[0_24px_55px_rgba(108,86,72,0.16)]" />
         </div>
       </section>
 
@@ -56,7 +57,7 @@ export default function Home() {
           <div className="grid items-center gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-14">
             <div className="relative mx-auto w-full max-w-sm">
               <span className="absolute -left-8 top-10 size-36 rounded-full bg-[#B5CBD1]/35 blur-2xl" />
-              <img src={site.assets.cover} alt="Titelseite von Mein kleines Gefühls-Buch" className="relative mx-auto w-4/5 max-w-[16rem] rotate-[-2deg] rounded-[1.5rem] shadow-[0_18px_38px_rgba(88,83,67,0.17)]" />
+              <img src={site.assets.bookWorld} alt="Aufgeschlagene Buchseiten mit Gefühlsfarben und kindgerechten Aquarellillustrationen" width="1800" height="1410" loading="lazy" className="relative mx-auto w-full max-w-sm rounded-[1.5rem] shadow-[0_18px_38px_rgba(88,83,67,0.17)]" />
             </div>
             <div className="max-w-2xl">
               <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">Die Buchwelt</p>
@@ -90,6 +91,8 @@ export default function Home() {
         </div>
       </section>
 
+      <EmotionMotion />
+
       <section className="mx-auto grid max-w-7xl items-center gap-9 px-5 pb-16 sm:px-8 sm:pb-20 lg:grid-cols-[1.12fr_0.88fr] lg:px-10">
         <div className="book-invitation rounded-[2rem] bg-[linear-gradient(135deg,#F2F9FC_0%,#EAF4FA_64%,#FDF6EE_100%)] p-7 sm:p-9">
           <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">Für zu Hause und unterwegs</p>
@@ -101,14 +104,14 @@ export default function Home() {
         </div>
         <div className="relative mx-auto w-full max-w-md">
           <span className="absolute -right-4 top-8 size-32 rounded-full bg-[#F9CDBC]/35 blur-2xl" />
-          <img src={site.assets.leseprobe} alt="Handgemalte Illustration eines aufgeschlagenen Buches" className="relative rounded-[2rem] shadow-[0_18px_42px_rgba(88,83,67,0.14)]" />
+          <img src={site.assets.bookWorld} alt="Aufgeschlagene Buchseiten mit Gefühlsfarben und kindgerechten Aquarellillustrationen" width="1800" height="1410" loading="lazy" className="relative rounded-[2rem] shadow-[0_18px_42px_rgba(88,83,67,0.14)]" />
         </div>
       </section>
 
       <section className="mx-auto grid max-w-7xl items-center gap-9 px-5 pb-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:px-10">
         <div className="relative mx-auto w-full max-w-sm order-2 lg:order-1">
           <span className="absolute -left-6 bottom-6 size-32 rounded-full bg-[#B5CBD1]/35 blur-2xl" />
-          <img src={site.assets.newsletter} alt="Handgemaltes Briefumschlagmotiv mit Herz" className="relative rounded-[2rem] shadow-[0_18px_42px_rgba(88,83,67,0.14)]" />
+          <img src={site.assets.newsletter} alt="Aquarell-Umschlag mit Herz als Zeichen für kleine Elternimpulse" width="1400" height="1665" loading="lazy" className="relative rounded-[2rem] shadow-[0_18px_42px_rgba(88,83,67,0.14)]" />
         </div>
         <div className="book-invitation order-1 rounded-[2rem] bg-[linear-gradient(135deg,#FDF6EE_0%,#F8FBFC_58%,#EAF4FA_100%)] p-7 sm:p-9 lg:order-2">
           <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#4A8BCE]">In Verbindung bleiben</p>

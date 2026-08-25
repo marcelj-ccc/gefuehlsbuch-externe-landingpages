@@ -8,8 +8,8 @@ type SeoHeadProps = {
   type?: "website" | "article";
 };
 
-const siteOrigin = "https://kleinesbuch-m2jwekcg.manus.space";
-const fallbackImage = "https://github.com/marcelj-ccc/gefuehlsbuch-externe-landingpages/releases/download/assets-v1/gefuehlsbuch-hero-lesen.png";
+const siteOrigin = site.origin;
+const fallbackImage = `${siteOrigin}${site.assets.hero}`;
 
 function setMeta(selector: string, attribute: "name" | "property", key: string, content: string) {
   let element = document.head.querySelector<HTMLMetaElement>(selector);
