@@ -1,18 +1,18 @@
 const asset = (file: string) => `${import.meta.env.BASE_URL}brand/${file}`;
 
 const localAssets = {
-  // Genau drei Ersatzmotive aus der bereits produzierten Marketingbibliothek.
-  hero: asset("hero-marketing-ritual.png"),
-  bookWorld: asset("buchwelt-marketing-kita.png"),
-  newsletter: asset("newsletter-marketing-impuls.png"),
+  // Genau vier speziell für die Website erzeugte, ruhige Markenmotive.
+  hero: asset("website-hero-gemeinsam-lesen.png"),
+  bookWorld: asset("website-buchwelt-gefuehlsfarben.png"),
+  newsletter: asset("website-newsletter-kleine-impulse.png"),
   // Unveränderte Originalbestandteile der Website.
   mark: asset("logo-original.png"),
   cover: asset("gefuehlsbuch-cover-echt.png"),
-  pdf: asset("Leseprobe_Mein_kleines_Gefuehls_Buch.pdf"),
+  pdf: asset("Leseprobe_Mein_kleines_Gefuehls_Buch_10_Seiten.pdf"),
   // Kurzes lokales Bewegungsmodul, kein GIF und kein externer Videoaufruf.
   motion: asset("gefuehlsmoment-bewegung.mp4"),
-  motionPoster: asset("hero-marketing-ritual.png"),
-  leseprobe: asset("buchwelt-marketing-kita.png"),
+  motionPoster: asset("website-hero-gemeinsam-lesen.png"),
+  leseprobe: asset("website-nach-der-kita-gespraech.png"),
 } as const;
 
 export const site = {
