@@ -32,8 +32,12 @@ function confirmationUrl() {
   if (configuredUrl) return configuredUrl;
 
   if (typeof window !== "undefined") {
-    const path = `${import.meta.env.BASE_URL}newsletter?newsletter=confirmed`;
-    return new URL(path, window.location.origin).toString();
+    // Die Rückleitung muss die aktuell geöffnete Newsletter-Route behalten.
+    // Relative Build-Pfade würden sonst aus /newsletter/ fälschlich /newsletter/newsletter machen.
+    const url = new URL(window.location.href);
+    url.search = "newsletter=confirmed";
+    url.hash = "";
+    return url.toString();
   }
 
   return "/newsletter?newsletter=confirmed";
