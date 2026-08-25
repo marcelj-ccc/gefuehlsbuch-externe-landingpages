@@ -12,6 +12,7 @@ import Datenschutz from "./pages/Datenschutz";
 import Home from "./pages/Home";
 import Impressum from "./pages/Impressum";
 import Leseprobe from "./pages/Leseprobe";
+import Elternratgeber from "./pages/Elternratgeber";
 import Newsletter from "./pages/Newsletter";
 import { SeoHead } from "./components/SeoHead";
 import NotFound from "./pages/NotFound";
@@ -53,6 +54,9 @@ function AppRoutes() {
         <Route path="/" component={Home} />
         <Route path="/leseprobe" component={Leseprobe} />
         <Route path="/newsletter" component={Newsletter} />
+        <Route path="/wut-bei-kindern" component={Elternratgeber} />
+        <Route path="/gefuehle-benennen" component={Elternratgeber} />
+        <Route path="/abendritual-mit-kindern" component={Elternratgeber} />
         <Route path="/impressum" component={Impressum} />
         <Route path="/datenschutz" component={Datenschutz} />
         <Route component={NotFound} />
