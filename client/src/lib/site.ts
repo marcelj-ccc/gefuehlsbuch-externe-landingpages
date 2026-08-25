@@ -1,19 +1,21 @@
+const asset = (file: string) => `${import.meta.env.BASE_URL}brand/${file}`;
+
 const localAssets = {
-  hero: "/brand/hero-familienlesemoment.webp",
-  bookWorld: "/brand/buchwelten-innenseiten.webp",
-  leseprobe: "/brand/buchwelten-innenseiten.webp",
-  newsletter: "/brand/newsletter-umschlag.webp",
-  motion: "/brand/gefuehlsmoment-bewegung.webm",
-  motionPoster: "/brand/hero-familienlesemoment.webp",
+  hero: asset("hero-familienlesemoment.webp"),
+  bookWorld: asset("buchwelten-innenseiten.webp"),
+  leseprobe: asset("buchwelten-innenseiten.webp"),
+  newsletter: asset("newsletter-umschlag.webp"),
+  motion: asset("gefuehlsmoment-bewegung.webm"),
+  motionPoster: asset("hero-familienlesemoment.webp"),
   mark: "/manus-storage/gefuehlsbuch-marke-sonne_0e729a9a.png",
-  cover: "/brand/gefuehlsbuch-cover-echt.png",
+  cover: asset("gefuehlsbuch-cover-echt.png"),
   pdf: "/manus-storage/Leseprobe_Mein_kleines_Gefuehls_Buch_5aaa95a9.pdf",
 } as const;
 
 /** Öffentliche, externe Website-Adresse – keine sichtbaren GitHub-Ziele. */
 export const site = {
   name: "Mein kleines Gefühls-Buch",
-  origin: "https://kleinesbuch-m2jwekcg.manus.space",
+  origin: "https://marcelj-ccc.github.io/gefuehlsbuch-externe-landingpages",
   amazonBook: "https://amzn.eu/d/01oOpOaU",
   assets: localAssets,
 } as const;

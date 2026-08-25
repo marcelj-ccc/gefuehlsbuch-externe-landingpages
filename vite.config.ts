@@ -209,9 +209,9 @@ const configuredBasePath = process.env.VITE_BASE_PATH?.trim();
 // Relative Asset-URLs keep the same static build functional on project Pages and on a custom root domain.
 const publicBasePath = configuredBasePath === "." || configuredBasePath === "./"
   ? "./"
-  : configuredBasePath
+    : configuredBasePath
     ? `${configuredBasePath.startsWith("/") ? "" : "/"}${configuredBasePath.replace(/\/$/, "")}/`
-    : "./";
+    : "/gefuehlsbuch-externe-landingpages/";
 
 export default defineConfig({
   // GitHub Pages serves this project below the repository name.
