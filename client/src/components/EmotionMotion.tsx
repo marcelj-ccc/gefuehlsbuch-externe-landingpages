@@ -39,7 +39,7 @@ export function EmotionMotion() {
               className="aspect-[9/11] w-full object-cover sm:aspect-[16/10]"
               aria-label="Sanfter Bewegungsmoment aus der Gefühlswelt des Buches"
             >
-              <source src={site.assets.motion} type="video/webm" />
+              <source src={site.assets.motion} type="video/mp4" />
               Dein Browser unterstützt dieses Video nicht.
             </video>
             <Button

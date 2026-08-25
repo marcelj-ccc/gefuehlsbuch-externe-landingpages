@@ -1,18 +1,20 @@
 const asset = (file: string) => `${import.meta.env.BASE_URL}brand/${file}`;
 
 const localAssets = {
-  hero: asset("hero-familienlesemoment.webp"),
-  bookWorld: asset("buchwelten-innenseiten.webp"),
-  leseprobe: asset("buchwelten-innenseiten.webp"),
-  newsletter: asset("newsletter-umschlag.webp"),
-  motion: asset("gefuehlsmoment-bewegung.webm"),
-  motionPoster: asset("hero-familienlesemoment.webp"),
-  mark: "/manus-storage/gefuehlsbuch-marke-sonne_0e729a9a.png",
+  // Genau drei Ersatzmotive aus der bereits produzierten Marketingbibliothek.
+  hero: asset("hero-marketing-ritual.png"),
+  bookWorld: asset("buchwelt-marketing-kita.png"),
+  newsletter: asset("newsletter-marketing-impuls.png"),
+  // Unveränderte Originalbestandteile der Website.
+  mark: asset("logo-original.png"),
   cover: asset("gefuehlsbuch-cover-echt.png"),
-  pdf: "/manus-storage/Leseprobe_Mein_kleines_Gefuehls_Buch_5aaa95a9.pdf",
+  pdf: asset("Leseprobe_Mein_kleines_Gefuehls_Buch.pdf"),
+  // Kurzes lokales Bewegungsmodul, kein GIF und kein externer Videoaufruf.
+  motion: asset("gefuehlsmoment-bewegung.mp4"),
+  motionPoster: asset("hero-marketing-ritual.png"),
+  leseprobe: asset("buchwelt-marketing-kita.png"),
 } as const;
 
-/** Öffentliche, externe Website-Adresse – keine sichtbaren GitHub-Ziele. */
 export const site = {
   name: "Mein kleines Gefühls-Buch",
   origin: "https://marcelj-ccc.github.io/gefuehlsbuch-externe-landingpages",
@@ -20,10 +22,7 @@ export const site = {
   assets: localAssets,
 } as const;
 
-/**
- * Newsletter-Zustellung: Ein eigener Apps-Script-Endpunkt versendet die
- * Bestätigung an die anmeldende Person und die Betreiberbenachrichtigung.
- */
+/** Newsletter-Zustellung über den bestehenden Apps-Script-Endpunkt. */
 export const newsletterConfig = {
   endpoint:
     import.meta.env.VITE_NEWSLETTER_FORM_ENDPOINT?.trim() ||
