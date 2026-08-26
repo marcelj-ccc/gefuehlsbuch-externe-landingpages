@@ -8,6 +8,8 @@ const localAssets = {
   // Unveränderte Originalbestandteile der Website.
   mark: asset("logo-original.png"),
   cover: asset("gefuehlsbuch-cover-echt.png"),
+  innerPage: asset("manuskript-innenseite-echt.png"),
+  ritual: asset("website-ritual-gefuehlsfarben.png"),
   pdf: asset("Leseprobe_Mein_kleines_Gefuehls_Buch_10_Seiten.pdf"),
   // Kurzes lokales Bewegungsmodul, kein GIF und kein externer Videoaufruf.
   motion: asset("gefuehlsmoment-bewegung.mp4"),

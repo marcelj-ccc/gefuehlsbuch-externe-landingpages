@@ -7,6 +7,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
 import { EmotionMotion } from "@/components/EmotionMotion";
+import { OpenBookPreview } from "@/components/OpenBookPreview";
 import { site } from "@/lib/site";
 
 const bookChapters = [
@@ -48,7 +49,7 @@ export default function Home() {
         <div className="relative mx-auto w-full max-w-lg">
           <div className="absolute -right-10 top-5 size-44 rounded-full bg-[#F9CDBC]/45 blur-2xl" />
           <div className="absolute -bottom-10 -left-8 size-44 rounded-full bg-[#B5CBD1]/45 blur-2xl" />
-          <img src={site.assets.hero} alt="Kind und Bezugsperson entdecken gemeinsam eine liebevolle Gefühlswelt" width="1800" height="1330" fetchPriority="high" className="relative rounded-[2.5rem] shadow-[0_24px_55px_rgba(108,86,72,0.16)]" />
+          <OpenBookPreview />
         </div>
       </section>
 
@@ -104,7 +105,7 @@ export default function Home() {
         </div>
         <div className="relative mx-auto w-full max-w-md">
           <span className="absolute -right-4 top-8 size-32 rounded-full bg-[#F9CDBC]/35 blur-2xl" />
-          <img src={site.assets.bookWorld} alt="Aufgeschlagene Buchseiten mit Gefühlsfarben und kindgerechten Aquarellillustrationen" width="1800" height="1410" loading="lazy" className="relative rounded-[2rem] shadow-[0_18px_42px_rgba(88,83,67,0.14)]" />
+          <img src={site.assets.ritual} alt="Kind und Bezugsperson legen gemeinsam Gefühlsfarben für ein ruhiges Gespräch bereit" width="1800" height="1013" loading="lazy" className="relative rounded-[2rem] shadow-[0_18px_42px_rgba(88,83,67,0.14)]" />
         </div>
       </section>
 
