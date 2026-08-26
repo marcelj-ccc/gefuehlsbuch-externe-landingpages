@@ -22,7 +22,7 @@ export function OpenBookPreview() {
         <div className="relative rounded-[1.35rem] border-[10px] border-[#805438] bg-[#805438] p-[3px] shadow-[0_30px_58px_rgba(84,56,39,0.34)]">
           <div className="absolute inset-x-3 -bottom-3 h-5 rounded-b-[0.6rem] border-x-2 border-b-2 border-[#73503B] bg-[#EDE3CB] shadow-[inset_0_-3px_0_rgba(118,80,56,0.16)]" />
           <div className="relative overflow-hidden rounded-[0.85rem] bg-[#F8F0E0]">
-            <img src={site.assets.cover} alt="Aktuelles Cover von Mein kleines Gefühls-Buch" width="880" height="1240" className="block aspect-[0.71] w-full object-cover object-top" />
+            <img src={site.assets.frontCover} alt="Aktuelles Frontcover von Mein kleines Gefühls-Buch" width="880" height="1240" className="block aspect-[0.71] w-full object-cover object-top" />
             <span className="pointer-events-none absolute inset-0 rounded-[0.85rem] border border-white/35" />
           </div>
         </div>
