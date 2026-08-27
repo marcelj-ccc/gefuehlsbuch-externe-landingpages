@@ -15,7 +15,7 @@ export function PageShell({ children }: PageShellProps) {
   const [location] = useLocation();
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#FCEDDD] text-[#3E4854]">
+    <div className="min-h-screen overflow-x-clip bg-[#FCEDDD] text-[#3E4854]">
       <div className="paper-grain pointer-events-none fixed inset-0 z-0 opacity-45" />
       <header className="relative z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
         <Link
