@@ -15,11 +15,13 @@ export default function Impressum() {
     >
       <div className="space-y-8 leading-relaxed text-[#4B545E]">
         <section>
-          <h2 className="font-display text-2xl font-semibold text-[#3372AF]">Anbieterin</h2>
+          <h2 className="font-display text-2xl font-semibold text-[#3372AF]">Anbieter</h2>
           <p className="mt-3 flex items-start gap-3">
             <MapPin className="mt-1 size-4 shrink-0 text-[#4A8BCE]" aria-hidden="true" />
             <span>
-              Emi Winter
+              Marcel Warnecke
+              <br />
+              handelt unter dem Künstlernamen Emie Winter
               <br />
               c/o Authors&rsquo; Dreams
               <br />
@@ -62,7 +64,7 @@ export default function Impressum() {
             Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
           </h2>
           <p className="mt-3">
-            Emi Winter
+            Marcel Warnecke, handelnd unter dem Künstlernamen Emie Winter
             <br />
             c/o Authors&rsquo; Dreams, Am Krummgewann 22, 64625 Bensheim
           </p>
@@ -74,7 +76,7 @@ export default function Impressum() {
             Alle Inhalte dieser Website, insbesondere Texte, Illustrationen und Bilder rund um
             &bdquo;Mein kleines Gefühls-Buch&ldquo;, unterliegen dem deutschen Urheberrecht. Jede
             Verwendung außerhalb der Grenzen des Urheberrechts bedarf der vorherigen schriftlichen
-            Zustimmung der Anbieterin.
+            Zustimmung des Anbieters.
           </p>
         </section>
 
