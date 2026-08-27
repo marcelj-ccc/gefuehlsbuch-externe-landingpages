@@ -50,8 +50,7 @@ export default function Datenschutz() {
             bereitgestellt. Beim Aufruf verarbeitet Webador technisch notwendige Verbindungsdaten,
             insbesondere IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seite sowie Browser-
             und Betriebssysteminformationen. Webador setzt für den technischen Betrieb unter anderem
-            Session-Cookies und führt Server-Protokolle. Webador beschreibt zudem eine
-            datenschutzfreundlich konfigurierte Reichweitenmessung mit anonymisierter IP-Adresse.
+            Session-Cookies und führt Server-Protokolle. Webador bindet auf der Originaldomain außerdem Plausible Analytics zur datenschutzfreundlichen Reichweitenmessung ein. Nach Angaben von Plausible werden dabei keine Cookies oder dauerhaften Kennungen gesetzt; die Roh-IP-Adresse wird nicht gespeichert, und die Verarbeitung findet auf Infrastruktur innerhalb der Europäischen Union statt. Weitere Informationen dazu findest du in der <a href="https://plausible.io/data-policy" target="_blank" rel="noreferrer" className="font-bold text-[#3372AF] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 hover:text-[#2D699F]">Plausible-Datenrichtlinie</a>.
           </p>
           <p className="mt-2">
             Rechtsgrundlage für die technisch erforderliche Bereitstellung ist Art. 6 Abs. 1 lit. f
