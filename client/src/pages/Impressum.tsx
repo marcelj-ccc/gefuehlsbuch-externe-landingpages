@@ -19,15 +19,13 @@ export default function Impressum() {
           <p className="mt-3 flex items-start gap-3">
             <MapPin className="mt-1 size-4 shrink-0 text-[#4A8BCE]" aria-hidden="true" />
             <span>
-              Marcel Warnecke
+              delacruzoriginals &ndash; Marcel Warnecke
               <br />
-              handelt unter dem Künstlernamen Emi Winter
+              c/o Online-Impressum.de #10588
               <br />
-              c/o Authors&rsquo; Dreams
+              Europaring 90
               <br />
-              Am Krummgewann 22
-              <br />
-              64625 Bensheim
+              53757 Sankt Augustin
               <br />
               Deutschland
             </span>
@@ -36,6 +34,19 @@ export default function Impressum() {
 
         <section>
           <h2 className="font-display text-2xl font-semibold text-[#3372AF]">Kontakt</h2>
+          <p className="mt-3 flex items-start gap-3">
+            <Mail className="mt-1 size-4 shrink-0 text-[#4A8BCE]" aria-hidden="true" />
+            <a
+              href="mailto:delacruzoriginals@mail.online-impressum.de"
+              className="font-bold text-[#3372AF] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 hover:text-[#2D699F]"
+            >
+              delacruzoriginals@mail.online-impressum.de
+            </a>
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-display text-2xl font-semibold text-[#3372AF]">Zweiter Kontaktweg</h2>
           <p className="mt-3 flex items-start gap-3">
             <Mail className="mt-1 size-4 shrink-0 text-[#4A8BCE]" aria-hidden="true" />
             <a
@@ -48,13 +59,28 @@ export default function Impressum() {
         </section>
 
         <section>
-          <h2 className="font-display text-2xl font-semibold text-[#3372AF]">Identifikationsnummer</h2>
-          <p className="mt-2">
-            Wirtschafts-Identifikationsnummer gemäß § 139c Abs. 1 AO: DE464220613
-          </p>
+          <h2 className="font-display text-2xl font-semibold text-[#3372AF]">
+            Wirtschafts-Identifikationsnummer
+          </h2>
+          <p className="mt-2">DE464220613</p>
           <p className="mt-2 text-sm text-[#737B83]">
-            Eine Umsatzsteuer-Identifikationsnummer nach § 27a UStG sowie ein Handelsregistereintrag
-            bestehen derzeit nicht.
+            Kein Umsatzsteuerausweis aufgrund der Anwendung der Kleinunternehmerregelung gemäß
+            § 19 UStG.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-display text-2xl font-semibold text-[#3372AF]">
+            Zuständige Aufsichtsbehörde
+          </h2>
+          <p className="mt-3">
+            Niedersächsische Landesmedienanstalt (NLM)
+            <br />
+            Seelhorststraße 18
+            <br />
+            30175 Hannover
+            <br />
+            Deutschland
           </p>
         </section>
 
@@ -63,9 +89,9 @@ export default function Impressum() {
             Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
           </h2>
           <p className="mt-3">
-            Marcel Warnecke, handelnd unter dem Künstlernamen Emi Winter
+            Marcel Warnecke
             <br />
-            c/o Authors&rsquo; Dreams, Am Krummgewann 22, 64625 Bensheim
+            c/o Online-Impressum.de #10588, Europaring 90, 53757 Sankt Augustin
           </p>
         </section>
 

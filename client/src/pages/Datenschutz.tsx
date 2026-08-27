@@ -24,10 +24,19 @@ export default function Datenschutz() {
         <section>
           <H2>1. Verantwortlicher</H2>
           <p className="mt-3">
-            Marcel Warnecke, handelnd unter dem Künstlernamen Emi Winter, c/o Authors&rsquo; Dreams,
-            Am Krummgewann 22, 64625 Bensheim, Deutschland
+            delacruzoriginals &ndash; Marcel Warnecke
+            <br />
+            c/o Online-Impressum.de #10588, Europaring 90, 53757 Sankt Augustin, Deutschland
             <br />
             E-Mail:{" "}
+            <a
+              href="mailto:delacruzoriginals@mail.online-impressum.de"
+              className="font-bold text-[#3372AF] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 hover:text-[#2D699F]"
+            >
+              delacruzoriginals@mail.online-impressum.de
+            </a>
+            <br />
+            Zweiter Kontaktweg:{" "}
             <a
               href="mailto:info@meinkleinesgefuehlsbuch.de"
               className="font-bold text-[#3372AF] underline decoration-[#B5CBD1] decoration-2 underline-offset-4 hover:text-[#2D699F]"
