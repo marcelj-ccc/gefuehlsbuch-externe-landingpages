@@ -21,6 +21,8 @@ export default function Impressum() {
             <span>
               delacruzoriginals &ndash; Marcel Warnecke
               <br />
+              handelnd unter dem Künstlernamen Emi Winter
+              <br />
               c/o Online-Impressum.de #10588
               <br />
               Europaring 90
