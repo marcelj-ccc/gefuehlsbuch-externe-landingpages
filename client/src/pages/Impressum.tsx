@@ -30,6 +30,10 @@ export default function Impressum() {
               53757 Sankt Augustin
               <br />
               Deutschland
+              <br />
+              <span className="text-sm text-[#737B83]">
+                Zustellungsanschrift über den Impressumsdienst Online-Impressum.de; die Kennung #10588 dient der eindeutigen Zuordnung von Postsendungen.
+              </span>
             </span>
           </p>
         </section>
