@@ -21,7 +21,7 @@ export default function Impressum() {
             <span>
               Marcel Warnecke
               <br />
-              handelt unter dem Künstlernamen Emie Winter
+              handelt unter dem Künstlernamen Emi Winter
               <br />
               c/o Authors&rsquo; Dreams
               <br />
@@ -49,7 +49,6 @@ export default function Impressum() {
 
         <section>
           <h2 className="font-display text-2xl font-semibold text-[#3372AF]">Identifikationsnummer</h2>
-          <p className="mt-3">IHK-Identifikationsnummer: 0060201524</p>
           <p className="mt-2">
             Wirtschafts-Identifikationsnummer gemäß § 139c Abs. 1 AO: DE464220613
           </p>
@@ -64,7 +63,7 @@ export default function Impressum() {
             Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
           </h2>
           <p className="mt-3">
-            Marcel Warnecke, handelnd unter dem Künstlernamen Emie Winter
+            Marcel Warnecke, handelnd unter dem Künstlernamen Emi Winter
             <br />
             c/o Authors&rsquo; Dreams, Am Krummgewann 22, 64625 Bensheim
           </p>
