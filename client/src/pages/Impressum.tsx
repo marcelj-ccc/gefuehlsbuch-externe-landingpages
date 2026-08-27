@@ -48,6 +48,9 @@ export default function Impressum() {
         <section>
           <h2 className="font-display text-2xl font-semibold text-[#3372AF]">Identifikationsnummer</h2>
           <p className="mt-3">IHK-Identifikationsnummer: 0060201524</p>
+          <p className="mt-2">
+            Wirtschafts-Identifikationsnummer gemäß § 139c Abs. 1 AO: DE464220613
+          </p>
           <p className="mt-2 text-sm text-[#737B83]">
             Eine Umsatzsteuer-Identifikationsnummer nach § 27a UStG sowie ein Handelsregistereintrag
             bestehen derzeit nicht.
@@ -92,7 +95,7 @@ export default function Impressum() {
           </h2>
           <p className="mt-3">
             Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
-            Verbraucherschlichtungsstelle teilzunehmen.
+            Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).
           </p>
         </section>
       </div>
